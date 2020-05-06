@@ -16,7 +16,8 @@ class CreateQuangcaoTable extends Migration
         Schema::create('quangcao', function (Blueprint $table) {
             $table->Increments('qc_ma');
             $table->String('qc_chuDe');
-		$table->String('qc_hinhAnh');
+		    $table->String('qc_hinhAnh');
+            $table->Boolean('qc_trangThai');
             $table->timestamps();
         });
     }

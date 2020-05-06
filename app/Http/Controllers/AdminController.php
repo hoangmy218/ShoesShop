@@ -15,9 +15,9 @@ class AdminController extends Controller
      // Ngân (11/3/2020) paste lại nguyên cái public authLogin
     public function authLogin(){
         
-        $cv=Session::get('cv_ma');
+        $ltk=Session::get('ltk_ma');
         
-        if ($cv==1) 
+        if ($ltk==1) 
             return Redirect::to('/dashboard'); 
         else 
             return Redirect::to('/admin')->send();
@@ -26,9 +26,9 @@ class AdminController extends Controller
 
     public function index()
     {
-        $cv=Session::get('cv_ma');
+        $ltk=Session::get('ltk_ma');
         
-        if ($cv==1) //Kiem tra neu dang dang nhap thi khong vao lai duoc trang admin-login
+        if ($ltk==1) //Kiem tra neu dang dang nhap thi khong vao lai duoc trang admin-login
             return Redirect::to('/dashboard'); 
         else 
             return view('admin_login');
@@ -60,9 +60,9 @@ class AdminController extends Controller
             echo '</pre>';*/
             /*return view('admin.dashboard');*/
             if ($result) {
-                Session::put('cv_ma',$result->cv_ma);
-                $cv=Session::get('cv_ma');
-                if($cv==1){
+                Session::put('ltk_ma',$result->ltk_ma);
+                $ltk=Session::get('ltk_ma');
+                if($ltk==1){
                     Session::put('nd_ma', $result->nd_ma); // result trỏ tới trường csdl
                     Session::put('nd_ten',$result->nd_ten);
                     Session::put('nd_email',$result->nd_email);
@@ -84,7 +84,7 @@ class AdminController extends Controller
         $this->authLogin();
         Session::put('nd_ma',null);
         Session::put('nd_ten',null);
-        Session::put('cv_ma',null);
+        Session::put('ltk_ma',null);
         Session::put('nd_email',null);
         return Redirect::to('/admin');
         //echo "Logout";

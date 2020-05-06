@@ -108,7 +108,10 @@
                                     <a id="sanpham" href="javascript:void(0)"><i class="ik ik-package"></i><span>Quản lý sản phẩm</span> <span class="badge badge-danger"></span></a>
                                     <div class="submenu-content">
                                         <a id="themsanpham" href="{{URL::to('/add-product')}}" class="menu-item">Thêm sản phẩm</a>
+
                                         <a id="danhsachsanpham" href="{{URL::to('/manage-product')}}" class="menu-item">Danh sách sản phẩm</a>
+                                        <a id="kichco" href="{{URL::to('/manage-size')}}" class="menu-item">Quản lý kích cỡ</a>
+                                        <a id="mausac" href="{{URL::to('/manage-color')}}" class="menu-item">Quản lý màu sắc</a>
                                         
                                     </div>
                                 </div>
@@ -129,7 +132,15 @@
                                     </div>
                                 </div>
                                 <div class="nav-item has-sub">
-                                    <a id="kho" href="javascript:void(0)"><i class="ik ik-home"></i><span>Quản lý kho</span> <span class="badge badge-danger"></span></a>
+                                    <a id="nhacungcap" href="javascript:void(0)"><i class="ik ik-home"></i><span>Quản lý nhà cung cấp</span> <span class="badge badge-danger"></span></a>
+                                    <div class="submenu-content">
+                                        <a id="themnhacungcap" href="{{URL::to('/add-supplier')}}" class="menu-item">Thêm nhà cung cấp</a>
+                                        <a id="danhsachnhacungcap" href="{{URL::to('/manage-suppliers')}}" class="menu-item">Danh sách nhà cung cấp</a>
+                                       
+                                    </div>
+                                </div>
+                                <div class="nav-item has-sub">
+                                    <a id="kho" href="javascript:void(0)"><i class="ik ik-archive"></i><span>Quản lý kho</span> <span class="badge badge-danger"></span></a>
                                     <div class="submenu-content">
                                         <a id="nhaphang" href="{{URL::to('/add-goods-receipt')}}" class="menu-item">Nhập hàng</a>
                                         <a id="phieunhap" href="{{URL::to('/manage-goods-receipt')}}" class="menu-item">Quản lý phiếu nhập</a>
@@ -145,10 +156,10 @@
                                     </div>
                                 </div>
                                 <div class="nav-item has-sub">
-                                    <a id="thanhtoan" href="javascript:void(0)"><i class="ik ik-dollar-sign"></i><span>Phương thức thanh toán</span> <span class="badge badge-danger"></span></a>
+                                    <a id="thanhtoan" href="javascript:void(0)"><i class="ik ik-dollar-sign"></i><span>Hình thức thanh toán</span> <span class="badge badge-danger"></span></a>
                                     <div class="submenu-content">
-                                        <a id="themthanhtoan" href="{{URL::to('/add-pay')}}" class="menu-item">Thêm phương thức thanh toán</a>
-                                        <a id="danhsachthanhtoan" href="{{URL::to('/manage-pay')}}" class="menu-item">Danh sách phương thức <br> thanh toán</a>
+                                        <a id="themthanhtoan" href="{{URL::to('/add-pay')}}" class="menu-item">Thêm hình thức thanh toán</a>
+                                        <a id="danhsachthanhtoan" href="{{URL::to('/manage-pay')}}" class="menu-item">Danh sách hình thức <br> thanh toán</a>
                                        
                                     </div>
                                 </div>

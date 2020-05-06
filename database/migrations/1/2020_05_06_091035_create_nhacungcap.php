@@ -15,10 +15,10 @@ class CreateNhacungcap extends Migration
     {
         Schema::create('nhacungcap', function (Blueprint $table) {
             $table->Increments('ncc_ma'); //Increments là khóa chính
-            $table->String('nd_ten',50);
-            $table->String('nd_email',50);
-            $table->String('nd_dienThoai',10);
-            $table->Text('nd_diaChi');
+            $table->String('ncc_ten',50);
+            $table->String('ncc_email',50);
+            $table->String('ncc_dienThoai',10);
+            $table->Text('ncc_diaChi');
             
             $table->timestamps(); //tự động thêm thời gian tạo
         });

@@ -19,8 +19,7 @@ class CreateCochitietdonhang extends Migration
             $table->foreign('sp_ma')->references('sp_ma')->on('sanpham');
             $table->Integer('dh_ma')->unsigned();
             $table->foreign('dh_ma')->references('dh_ma')->on('donhang');
-            $table->unique('sp_ma');
-            $table->unique('dh_ma');
+            
             $table->Integer('SoLuongDat');
             $table->String('DonGiaBan');
            

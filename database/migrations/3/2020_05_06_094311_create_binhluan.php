@@ -20,13 +20,12 @@ class CreateBinhluan extends Migration
 
             $table->Integer('nd_ma')->unsigned();
             $table->foreign('nd_ma')->references('nd_ma')->on('nguoidung');
-            $table->unique('sp_ma');
-            $table->unique('nd_ma');
+            
 
             $table->Text('noiDung');
             $table->Boolean('trangThai');
             $table->Date('ngayBinhLuan');
-            $table->unique('ngayBinhLuan');
+           
             $table->timestamps();
         });
     }

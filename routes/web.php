@@ -176,6 +176,15 @@ Route::post('/save-product','ProductController@saveProduct');
 Route::get('/chinhsua-sanpham/{chinhsua_sp_ma}','ProductController@chinhsua_sanpham');
 Route::post('/capnhat-sanpham/{chinhsua_sp_ma}','ProductController@capnhat_sanpham');
 
+//MY - SUPPLIER
+Route::get('/add-supplier', 'SupplierController@addSupplier');
+Route::post('/save-supplier','SupplierController@saveSupplier');
+Route::get('/manage-suppliers','SupplierController@showSuppliers');
+Route::get('/delete-supplier/{ncc_ma}','SupplierController@deleteSupplier');
+Route::get('/edit-supplier/{ncc_ma}','SupplierController@editSupplier');
+Route::post('/update-supplier/{ncc_ma}','SupplierController@updateSupplier');
+
+
 //Goods-Receipt My
 Route::get('/add-goods-receipt','ProductController@addGoodsReceipt');
 Route::post('/save-goods-receipt','ProductController@saveGoodsReceipt');
