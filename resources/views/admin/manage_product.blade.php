@@ -32,6 +32,20 @@
                 </div>
             </div>
         </div>
+        <?php
+                            $message = Session::get('fail_message');
+                            if ($message){
+                                echo '<span class="alert alert-danger">'.$message."</span>";
+                                
+                                Session::put('fail_message',null);
+                            }
+                            $message = Session::get('success_message');
+                            if ($message){
+                                echo '<span class="alert alert-success">'.$message."</span>";
+                                
+                                Session::put('success_message',null);
+                            }
+                        ?>
         <div class="row">
             <div class="col-md-12">
 				<div class="card">
@@ -57,7 +71,8 @@
                                     <th>Thương hiệu</th>
                                     <th>Danh mục</th>
                                     <th>Đơn giá bán</th>
-                                    <th>Đơn giá nhập</th>
+                                    <th>Khuyến mãi</th>
+                                    <th>Trạng thái</th>
                                     <th>Thao tác</th>
                                    
                                 </tr>
@@ -86,8 +101,8 @@
                                             <td>{{$pro->sp_ten}}</td>
                                             <td>{{$pro->th_ten}}</td>
                                             <td>{{$pro->dm_ten}}</td>
-                                            <td>{{$pro->sp_donGiaBan}}</td>
-                                            <td>{{$pro->sp_donGiaNhap}}</td>
+                                            <td>{{$pro->sp_donGiaBan}}</td>{{-- 
+                                            <td>{{$pro->sp_donGiaNhap}}</td> --}}
                                             <td>
                                                 <a href="{{URL::to('/chitiet-sanpham/'.$pro->sp_ma)}}"><i class="ik ik-eye"></i></a>
                                                 <a href="{{URL::to('/chinhsua-sanpham/'.$pro->sp_ma)}}"><i class="ik ik-edit-2"></i></a>
@@ -112,7 +127,10 @@
 $(document).ready(function(){
 
         $('#sanpham').parent().addClass('active open');
-         $("#danhsachsanpham").addClass("active");
+        $("#danhsachsanpham").addClass("active");
+         setTimeout(function(){
+           $("span.alert").remove();
+        }, 5000 );
      });
 </script>
 

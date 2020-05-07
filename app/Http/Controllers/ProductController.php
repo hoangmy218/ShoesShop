@@ -26,7 +26,9 @@ class ProductController extends Controller
         $this->authLogin();
         $list_brand = DB::table("danhmuc")->orderby('dm_ma','desc')->get();
         $list_cate = DB::table("thuonghieu")->orderby('th_ma','desc')->get();
-        return view('admin.add_product')->with('list_cate',$list_cate)->with('list_brand',$list_brand);
+        $list_color = DB::table("mausac")->orderby('ms_ma','desc')->get();
+        $list_size = DB::table("kichco")->orderby('kc_ma','desc')->get();
+        return view('admin.add_product')->with('list_cate',$list_cate)->with('list_brand',$list_brand)->with('list_color',$list_color)->with('list_size',$list_size);
     	
     }
 
@@ -34,25 +36,35 @@ class ProductController extends Controller
         $data = array();
         $data['sp_ten'] = $request->pro_name;
         $data['sp_donGiaBan'] = $request->pro_price;
-        $data['sp_ghiChu'] = $request->pro_note;
+        $data['sp_moTa'] = $request->pro_des;
         $data['th_ma'] = $request->pro_brand;
         $data['dm_ma'] = $request->pro_cate;
-       
-        if($request->hasFile('product_image')) {
-            $sp_ma = DB::table('sanpham')->insertGetId($data);
-                // duyệt từng ảnh và thực hiện lưu
-                foreach ($request->product_image as $photo) {
-                    $get_image = $photo->getClientOriginalName();
-                    $destinationPath = public_path('upload/product');
-                    $photo->move($destinationPath, $get_image);
-                    $data_img = array();
-                    $data_img['sp_ma']=$sp_ma;
-                    $data_img['ha_ten']=$get_image;
-                    DB::table('hinhanh')->insert($data_img);
-                }
-                Session::put('message','Thêm sản phẩm thành công!');
-                return Redirect::to('/manage-product');
+        $data['ms_ma'] = $request->pro_color;
+        $data['sp_soLuongTon'] = 0;
+        $data['sp_trangThai'] = 0;
+        $data['km_ma'] =0;
+        // $data['kc_ma'] = 0;
+        try{
+                if($request->hasFile('product_image')) {
+                $sp_ma = DB::table('sanpham')->insertGetId($data);
+                    // duyệt từng ảnh và thực hiện lưu
+                    foreach ($request->product_image as $photo) {
+                        $get_image = $photo->getClientOriginalName();
+                        $destinationPath = public_path('upload/product');
+                        $photo->move($destinationPath, $get_image);
+                        $data_img = array();
+                        $data_img['sp_ma']=$sp_ma;
+                        $data_img['ha_ten']=$get_image;
+                        $data['ms_ma'] = $request->pro_color;
+                        DB::table('hinhanh')->insert($data_img);
+                    }
+                    Session::put('success_message','Thêm sản phẩm thành công!');
+                    return Redirect::to('/manage-product');
+            }
+        }catch (\Illuminate\Database\QueryException $e) {
+            Session::put('fail_message','Thêm sản phẩm không thành công!');
         }
+        
 
     }
 
