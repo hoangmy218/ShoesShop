@@ -35,7 +35,7 @@ class StockController extends Controller
     	return json_encode($stocks);*/
     }
 
-    public function getSlt(Request $request)
+    /*public function getSlt(Request $request)
     {
         
         $stocks = DB::Table('chitietsanpham')->select('ctsp_soLuongTon')->where('ctsp_ma',$request->ctsp_ma)->first(); 
@@ -46,7 +46,7 @@ class StockController extends Controller
 
         $stocks = Stock::where('size_id',$request->size_id)->pluck('stock_number','stock_id');
         return json_encode($stocks);*/
-    }
+    //}
 
      public function getAmount(Request $request)
     {

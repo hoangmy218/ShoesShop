@@ -7,6 +7,7 @@ use DB;
 use Session;
 use Carbon\Carbon;
 use App\Comment;
+use App\SanPham;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 session_start();
 
 class CommentController extends Controller
+
 {
     //Tien 21/03
      public function authLogin(){
@@ -24,19 +26,22 @@ class CommentController extends Controller
             return Redirect::to('/admin')->send();
     }
 
-
     // Tiên 14/03
     public function postComment(Request $request, $id){
+
+        // $this->authLogin();
         $data = new Comment; // cách 1 insert vào model Comment
-        
-        
-        $data->bl_email = $request->email;
-        $data->bl_ten = $request->name;
-        $data->bl_noidung = $request->content;
+    
+        $data->noiDung = $request->content;
+        $data->trangThai = 0;
         $data->sp_ma = $id;
+        $data->nd_ma = Session::get('nd_ma');
+        $data->ngayBinhLuan=Carbon::now()->toDateString();
         $data->save();
     
+        Session::put('success_message','Viết bình luận thành công !');
         return back(); 
+        // return back(); 
 
         //$data= array(); // cách 2 insert vo bảng
         // $data['bl_email'] = $request->email;
@@ -54,18 +59,29 @@ class CommentController extends Controller
         return view('admin_layout')->with('admin.manage_comment', $manager_comment);
         /*return view('admin.manage_category');*/
     }
-
-    public function active_comment($Controll_bl_id){
-            //$this->AuthLogin();
-            DB::table('binhluan')->where('bl_id', $Controll_bl_id)->update(['bl_trangThai'=>0]);
-            Session::put('message', 'Hiển thị bình luận thành công');
+// Tiên 08/05
+    public function active_comment($nd_ma, $sp_ma,$ngayBinhLuan){
+        try {
+    
+            DB::table('binhluan')->where([['nd_ma', $nd_ma],['sp_ma', $sp_ma],['ngayBinhLuan', $ngayBinhLuan]])->update(['trangThai'=>0]);
+            Session::put('success_message1','Hiển thị bình luận thành công !');
+            
+        } catch (\Illuminate\Database\QueryException $e) {
+            Session::put('fail_message1','Hiển thị bình luận không thành công !');
+        }
             return Redirect::to('manage-comment');
     }
-    public function unactive_comment($Controll_bl_id){
+    // Tiên 08/05
+    public function unactive_comment($nd_ma, $sp_ma,$ngayBinhLuan){
             //$this->AuthLogin();
-           DB::table('binhluan')->where('bl_id', $Controll_bl_id)->update(['bl_trangThai'=>1]);
-            Session::put('message', 'Ẩn bình luận thành công!');
-            return Redirect::to('manage-comment');
+        try {
+    
+            DB::table('binhluan')->where([['nd_ma', $nd_ma],['sp_ma', $sp_ma],['ngayBinhLuan', $ngayBinhLuan]])->update(['trangThai'=>1]);
+            Session::put('success_message1','Ẩn bình luận thành công !');
+            
+        } catch (\Illuminate\Database\QueryException $e) {
+            Session::put('fail_message1','Ẩn bình luận không thành công !');
+        }
+        return Redirect::to('manage-comment');
     }
-
 }

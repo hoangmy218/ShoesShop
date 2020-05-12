@@ -14,9 +14,9 @@ class CartController extends Controller
 {
      public function authLogin(){
         $user_id = Session::get('nd_ma');
-        $cv=Session::get('cv_ma');
+        $ltk=Session::get('ltk_ma');
         
-        if (($user_id)&&($cv==2)) 
+        if (($user_id)&&($ltk==2)) 
             return Redirect::to('/Home_u'); 
         else 
             return Redirect::to('/')->send();
@@ -56,32 +56,46 @@ class CartController extends Controller
     	return view("pages.cart.show_cart");
     }
 
-     // Tien 
+     // Tien sua 08/05
     public function save_cart(Request $request){
         $this->authLogin();
-    	$id= $request->size; //ctspma
+    	$size= $request->size; //size_id
+        $mausac= $request->mausac; //mausac_id
+        $sp_ma= $request->productid_hidden; //sp_ma
+
     	$soluong = $request->quantity;
+        echo 'size'.$size.'\n';
+        echo 'mausac'.$mausac.'\n';
+        echo 'sp_ma'.$sp_ma.'\n';
+        echo 'soluong'.$soluong;
 
-    	$ctsp = DB::table('chitietsanpham')->where('ctsp_ma',$id)->first();
 
-    	$ma_sanpham = $ctsp->sp_ma;
+    	$ctsp = DB::table('cochitietsanpham')->join('sanpham','sanpham.sp_ma','=','cochitietsanpham.sp_ma')->join('kichco','kichco.kc_ma','=','cochitietsanpham.kc_ma')->join('mausac','mausac.ms_ma','=','cochitietsanpham.ms_ma')->where([['cochitietsanpham.kc_ma',$size],
+            ['cochitietsanpham.ms_ma',$mausac],['cochitietsanpham.sp_ma',$sp_ma]])->first();
+
+  //   	// $ma_sanpham = $ctsp->sp_ma;
 
     
-    	$sanpham = DB::table('sanpham')->where('sp_ma',$ma_sanpham)->first(); 
+  //   	// $sanpham = DB::table('sanpham')->where('sp_ma',$ma_sanpham)->first(); 
 
-        $hinhanh= DB::table('hinhanh')->where('sp_ma',$sanpham->sp_ma)->first(); 
+        $hinhanh= DB::table('hinhanh')->where('sp_ma',$sp_ma)->first(); 
 
 		$data= array();
-    	$data['id'] = $id;
+    	$data['id'] = $sp_ma;
         $data['qty'] = $soluong;
-        $data['name'] = $sanpham->sp_ten;
-        $data['price'] = $sanpham->sp_donGiaBan;
+        $data['name'] = $ctsp->sp_ten;
+        $data['price'] = $ctsp->sp_donGiaBan;
         $data['weight'] = 0;
         $data['options']['image'] = $hinhanh->ha_ten;
-        $data['options']['size'] = $ctsp->ctsp_kichCo;
+        $data['options']['mausac'] = $ctsp->ms_ma;
+        $data['options']['size'] = $ctsp->kc_ma;
   
         // return view("pages.cart.show_cart");
 		Cart::add($data);
+        // echo "<pre>";
+        // print_r($data);
+        // echo "</pre>";
+
         // Cart::destroy();
    		return Redirect::to('/show-cart');
     }// Tien 

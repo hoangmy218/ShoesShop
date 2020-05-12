@@ -65,6 +65,7 @@
                                                         <th>Mã phiếu nhập</th>
                                                         <th>Ngày nhập</th> 
                                                         <th>Số sản phẩm</th>
+                                                        <th>Tổng tiền</th>
                                                         <th>Thao tác</th>
                                                     </tr>
                                                 </thead>
@@ -75,7 +76,8 @@
                                                         <th scope="row">{{$i}}</th>
                                                         <td>{{$receipt->pn_ma}}</td>
                                                         <td>{{ date('d-m-Y',strtotime($receipt->pn_ngayNhap))}}</td>
-                                                        <td>{{$receipt->count}}</td>
+                                                        <td >{{$receipt->count}}</td>
+                                                        <td style="text-align: right;">{{number_format($receipt->pn_tongTien).' VND'}}</td>
                                                         <td><div class="table-actions" style="text-align: left">
                                                             <a href="{{URL::to('/view-receipt/'.$receipt->pn_ma)}}"><i class="ik ik-eye f-16 mr-15 text-blue"></i></a> 
                                                             <a><i id="{{$receipt->pn_ma}}" class="ik ik-edit-2 f-16 mr-15 edit text-green"></i></a> 
@@ -147,6 +149,12 @@
 
 <script src="http://www.codermen.com/js/jquery.js"></script>
 <script>
+    function rating(a){
+      console.log((a.parentElement).parentElement.parentElement.childNodes[3].childNodes[1].innerHTML);
+      var ctsp_ma = (a.parentElement).parentElement.parentElement.childNodes[3].childNodes[1].innerHTML;
+     /* var size_id = a.innerHTML;
+        console.log(size_id);*/
+    }
     $(document).ready(function(){
 
         //dat thi gian tat thong bao
@@ -167,6 +175,7 @@
             pn_ma = $(this).attr('id');
             console.log('clicked edit');
             console.log(pn_ma,'pn_ma');
+            
             if (pn_ma){
 
 

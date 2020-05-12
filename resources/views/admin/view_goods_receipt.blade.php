@@ -95,6 +95,7 @@
                                                     <th>STT</th>
                                                     <th>Mã sản phẩm</th>
                                                     <th>Tên sản phẩm</th>
+                                                    <th>Màu sắc</th>
                                                     <th>Kích cỡ</th>
                                                     <th>Số lượng nhập</th>
                                                     <th>Số lượng tồn</th>
@@ -105,21 +106,22 @@
                                             </thead>
                                             <tbody>
                                                 <?php $i=1; ?>
-                                                @foreach($receipt_detail as $key => $receipt)
+                                                @foreach($list_pro as $key => $pro)
                                                 <tr>
                                                     <td>{{$i++}}</td>
-                                                    <td>{{$receipt->ctsp_ma}}</td>
-                                                    <td>{{$receipt->sp_ten}}</td>
-                                                    <td>{{$receipt->ctsp_kichCo}}</td>
-                                                    <td>{{$receipt->ctsp_soLuongNhap}}</td>
-                                                    <td>{{$receipt->ctsp_soLuongTon}}</td>
-                                                    <td>{{number_format($receipt->sp_donGiaNhap).' VND'}}</td>
-                                                    <td>{{number_format($receipt->sp_donGiaBan).' VND'}}</td>
+                                                    <td>{{$pro->sp_ma}}</td>
+                                                    <td>{{$pro->sp_ten}}</td>
+                                                    <td class="{{$pro->ms_ma}}">{{$pro->ms_ten}}</td>
+                                                    <td class="{{$pro->kc_ma}}">{{$pro->kc_ten}}</td>
+                                                    <td>{{$pro->SoLuongNhap}}</td>
+                                                    <td>{{$pro->soLuongTon}}</td>
+                                                    <td>{{number_format($pro->DonGiaNhap).' VND'}}</td>
+                                                    <td>{{number_format($pro->sp_donGiaBan).' VND'}}</td>
                                                     <td>
                                                         <div class="table-actions" style="text-align: left">
                                                             
-                                                            <a><i id="{{$receipt->ctsp_ma}}" class="ik ik-edit-2 f-16 mr-15 edit text-green"></i></a>
-                                                            <a> <i class="ik ik-trash-2 f-16 mr-15 delete text-red" id="{{$receipt->ctsp_ma}}"></i></a>
+                                                            <a><i id="{{$pro->pn_ma}}" class="ik ik-edit-2 f-16 mr-15 edit text-green"></i></a>
+                                                            <a> <i class="ik ik-trash-2 f-16 mr-15 delete text-red" id="{{$pro->sp_ma}}"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -164,7 +166,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalCenterLabel">Chỉnh sửa sản phẩm nhập</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <button type="button" class="close cancelEdit" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <div class="modal-body">
                                         
@@ -173,24 +175,50 @@
                                                {{--  <div class="form-group" style="padding-bottom: 10px;"> --}}
                                                     {{-- <label for="date">Ngày nhập</label>
                                                     <input type="date" name="ngayNhap" class="form-control datetimepicker-input" id="datepicker" data-toggle="datetimepicker" data-target="#datepicker"> --}}
-                                                    <div class="form-group">
+                                                    {{-- <div class="form-group">
                                                         <label for="exampleInputName1">Mã sản phẩm</label>
                                                         <div class="form-group mb-2 mr-sm-2 mb-sm-0">
-                                                            <input type="text" name="ctsp_ma" class="form-control" id="exampleInputName1" readonly="readonly">
+                                                            <input type="text" name="ma_sp" class="form-control" id="exampleInputName1" readonly="readonly">
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="form-group">
                                                         <label for="exampleInputName1">Tên sản phẩm</label>
                                                         <div class="form-group  mb-2 mr-sm-2 mb-sm-0">
                                                            <select class="form-control" name="masp" >
-                                                                @foreach($list_pro as $key => $pro)
-                                                                    <option value="{{$pro->sp_ma}}">{{$pro->sp_ten}}</option>                                                  
+                                                                @foreach($list_products as $key => $pro)
+                                                                    <option value="{{$pro->sp_ma}}" name="sp">{{$pro->sp_ten}}</option>                                                  
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleInputName1">Màu sắc </label>
+                                                        <div class="form-group mb-2 mr-sm-2 mb-sm-0">
+                                                            <select class="form-control" name="mams" >
+                                                                @foreach($list_colors as $key => $color)
+                                                                    <option value="{{$color->ms_ma}}" name="ms">{{$color->ms_ten}}</option>                                                  
                                                                 @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
                                                      <div class="form-group">
-                                                        <label for="exampleInputName1">Đơn giá nhập</label>
+                                                        <label for="exampleInputName1">Kích cỡ </label>
+                                                        <div class="form-group mb-2 mr-sm-2 mb-sm-0">
+                                                            <select class="form-control" name="makc" >
+                                                                @foreach($list_sizes as $key => $size)
+                                                                    <option value="{{$size->kc_ma}}" name="kc">{{$size->kc_ten}}</option>                                                  
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-group">
+                                                        <label for="exampleInputName1">Số lượng nhập </label>
+                                                        <div class="form-group mb-2 mr-sm-2 mb-sm-0">
+                                                            <input type="number" class="form-control" name="soLuongNhap" min="1" step="1" max="100" >
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-group">
+                                                        <label for="exampleInputName1">Đơn giá nhập </label>
                                                         <div class="form-group mb-2 mr-sm-2 mb-sm-0">
                                                             <input type="number" class="form-control" name="giaNhap" min="100000" step="1000" max="5000000">
                                                         </div>
@@ -201,22 +229,12 @@
                                                             <input type="number" class="form-control" name="giaBan" min="100000" step="1000" max="5000000" >
                                                         </div>
                                                     </div>
-                                                     <div class="form-group">
-                                                        <label for="exampleInputName1">Kích cỡ </label>
-                                                        <div class="form-group mb-2 mr-sm-2 mb-sm-0">
-                                                            <input type="number" class="form-control" name="kichCo" min="1" step="1" max="40" value="35">
-                                                        </div>
-                                                    </div>
-                                                     <div class="form-group">
-                                                        <label for="exampleInputName1">Số lượng nhập </label>
-                                                        <div class="form-group mb-2 mr-sm-2 mb-sm-0">
-                                                            <input type="number" class="form-control" name="soLuongNhap" min="1" step="1" max="100" >
-                                                        </div>
-                                                    </div>
+
+                                                    
                                        
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                                                <button type="button" class="btn btn-danger cancelEdit" data-dismiss="modal">Hủy</button>
                                                 <button type="button" id="ok_save_btn" class="btn btn-success">Lưu</button>
                                             </div>
                                         </div>
@@ -241,17 +259,23 @@
          $("#phieunhap").addClass("active");
 
 
-        var ctsp_ma;
-        var pn_ma = $('input[name="pn_ma"]').val();
-
+        // var ctsp_ma;
+        //var pn_ma = $('input[name="pn_ma"]').val();
+        var pn_ma, sp_ma, ms_ma, kc_ma;
 
         //chinh sua phieu nhap
 
         $(document).on('click','.edit', function(){
-            ctsp_ma = $(this).attr('id');
+            pn_ma = $(this).attr('id');
             console.log('clicked edit');
-            console.log(ctsp_ma,'ctsp_ma');
-            if (ctsp_ma){
+            console.log(pn_ma,'pn_ma');
+             sp_ma = $.trim(($(this).parent()).parent().parent().parent().children().eq(1).text());
+            console.log(sp_ma,'sp_ma');
+             ms_ma = $.trim(($(this).parent()).parent().parent().parent().children().eq(3).attr('class'));
+            console.log(ms_ma,'ms_ma');
+             kc_ma = $.trim(($(this).parent()).parent().parent().parent().children().eq(4).attr('class'));
+            console.log(kc_ma,'kc_ma');
+            if (pn_ma){
 
 
                 $.ajax({
@@ -259,48 +283,82 @@
                         dataType: 'json',
                         type: 'GET',
                         data:{
-                            ctsp_ma: ctsp_ma,
+                            pn_ma: pn_ma,
+                            sp_ma: sp_ma,
+                            ms_ma: ms_ma,
+                            kc_ma: kc_ma,
                         },
                     success: function(data){
-                        console.log(data.ctsp_ma);
-                        $('input[name="ctsp_ma"]').replaceWith('<input type="text" name="ctsp_ma" class="form-control" id="exampleInputName1" readonly="true" value="'+data.ctsp_ma+'">');
-                        $('option[value="'+data.sp_ma+'"]').attr({"selected" : true});
-                        $('input[name="giaNhap"]').replaceWith('<input type="number" class="form-control" name="giaNhap" min="100000" step="1000" max="5000000" value="'+data.sp_donGiaNhap+'">');
+                        console.log(data);
+                        // $('input[name="ctsp_ma"]').replaceWith('<input type="text" name="ctsp_ma" class="form-control" id="exampleInputName1" readonly="true" value="'+data.ctsp_ma+'">');
+                        $('option[value="'+data.sp_ma+'"][name="sp"]').attr({"selected" : true});
+                        $('option[value="'+data.ms_ma+'"][name="ms"]').attr({"selected" : true});
+                        $('option[value="'+data.kc_ma+'"][name="kc"]').attr({"selected" : true});
+                        $('input[name="giaNhap"]').replaceWith('<input type="number" class="form-control" name="giaNhap" min="100000" step="1000" max="5000000" value="'+data.DonGiaNhap+'">');
                         $('input[name="giaBan"]').replaceWith('<input type="number" class="form-control" name="giaBan" min="100000" step="1000" max="5000000" value="'+data.sp_donGiaBan+'">');
-                        $('input[name="kichCo"]').replaceWith(' <input type="number" class="form-control" name="kichCo" min="1" step="1" max="40" value="'+data.ctsp_kichCo+'">');
-                        $('input[name="soLuongNhap"]').replaceWith(' <input type="number" class="form-control" name="soLuongNhap" min="1" step="1" max="100" value="'+data.ctsp_soLuongNhap+'">');
+                        
+                        $('input[name="soLuongNhap"]').replaceWith(' <input type="number" class="form-control" name="soLuongNhap" min="1" step="1" max="100" value="'+data.SoLuongNhap+'">');
                         
                     }
                 });
                 $('#editModal').modal('show');
                 
+            }else{
+             $('select[name="masp"]').empty();
+             $('select[name="makc"]').empty();
+             $('select[name="mams"]').empty();
             }
         });
         
+        $('.cancelEdit').click(function(){
+            pn_ma = null;
+            sp_ma = null;
+            kc_ma = null;
+            ms_ma = null;
+            $("option:selected").attr({"selected": false});
+            // $('select[name="masp"]').empty();
+            // $('select[name="makc"]').empty();
+            // $('select[name="mams"]').empty();
+        });
+
 
         //luu chinh sua
          $('#ok_save_btn').click(function(){
-            var sp_ma = $('select[name="masp"]').val();
-            var sp_donGiaNhap = $('input[name="giaNhap"]').val();
-            var sp_donGiaBan = $('input[name="giaBan"]').val();
-            var ctsp_kichCo = $('input[name="kichCo"]').val();
-            var ctsp_soLuongNhap = $('input[name="soLuongNhap"]').val();
-            console.log(sp_ma,'sp_ma');
-            console.log(sp_donGiaNhap,'sp_donGiaNhap');
-            console.log(sp_donGiaBan,'sp_donGiaBan');
-            console.log(ctsp_kichCo,'ctsp_kichCo');
-            console.log(ctsp_soLuongNhap,'ctsp_soLuongNhap');
+            var sp_ma_moi = $('select[name="masp"]').val();
+            var ms_ma_moi = $('select[name="mams"]').val();
+            var kc_ma_moi = $('select[name="makc"]').val();
+            var DonGiaNhap_moi = $('input[name="giaNhap"]').val();
+            var sp_donGiaBan_moi = $('input[name="giaBan"]').val();
+            var SoLuongNhap_moi = $('input[name="soLuongNhap"]').val();
+            console.log(sp_ma_moi,'sp_ma');
+            console.log(DonGiaNhap_moi,'sp_donGiaNhap');
+            console.log(sp_donGiaBan_moi,'sp_donGiaBan');
+            console.log(kc_ma_moi,'kichCo');
+            console.log(ms_ma_moi,'mausac');
+            console.log(SoLuongNhap_moi,'ctsp_soLuongNhap');
+
+            console.log(sp_ma,'sp_ma cu');
+            console.log(kc_ma,'kichCo cu');
+            console.log(ms_ma,'mausac cu');
             $.ajax({
                 
-                url: '<?php echo url('/save-edit-goods');?>/'+ctsp_ma,
+                url: '<?php echo url('/save-edit-goods');?>/'+pn_ma,
                 type: 'POST',
                 data:{
-                    sp_ma: sp_ma,
-                    sp_donGiaNhap: sp_donGiaNhap,
-                    sp_donGiaBan: sp_donGiaBan,
-                    ctsp_kichCo: ctsp_kichCo,
-                    ctsp_soLuongNhap: ctsp_soLuongNhap,
-                     _token: '{{csrf_token()}}'
+                    pn_ma: pn_ma,
+                    sp_ma_moi: sp_ma_moi,
+                    DonGiaNhap_moi: DonGiaNhap_moi,
+                    sp_donGiaBan_moi: sp_donGiaBan_moi,
+                    kc_ma_moi: kc_ma_moi,
+                    ms_ma_moi: ms_ma_moi,
+                    SoLuongNhap_moi: SoLuongNhap_moi,
+                    
+                    sp_ma_cu: sp_ma,
+                   
+                    kc_ma_cu: kc_ma,
+                    ms_ma_cu: ms_ma,
+                   
+                     _token: '{{csrf_token()}}',
                 },
                 
                 success: function (data) {

@@ -12,7 +12,6 @@ session_start();
 class AdminController extends Controller
 {
     
-     // Ngân (11/3/2020) paste lại nguyên cái public authLogin
     public function authLogin(){
         
         $ltk=Session::get('ltk_ma');
@@ -86,8 +85,7 @@ class AdminController extends Controller
         Session::put('nd_ten',null);
         Session::put('ltk_ma',null);
         Session::put('nd_email',null);
-        return Redirect::to('/admin');
-        //echo "Logout";
+        //Ngân (7/5/2020) bỏ return
     }
 
     public function manage_customer(){

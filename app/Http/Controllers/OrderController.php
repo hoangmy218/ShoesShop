@@ -23,7 +23,7 @@ class OrderController extends Controller
     public function showOrder()
     {
     	$this->authLogin();
-        $orders = DB::table('donhang')->join('nguoidung','nguoidung.nd_ma','donhang.nd_ma')->join('thanhtoan','thanhtoan.tt_ma','donhang.tt_ma')->join('vanchuyen','vanchuyen.vc_ma','donhang.vc_ma')->orderby('donhang.dh_ma','desc')->get();
+        $orders = DB::table('donhang')->join('nguoidung','nguoidung.nd_ma','donhang.nd_ma')->join('hinhthucthanhtoan','hinhthucthanhtoan.httt_ma','donhang.httt_ma')->join('hinhthucvanchuyen','hinhthucvanchuyen.htvc_ma','donhang.htvc_ma')->join('trangthai','trangthai.tt_ma','donhang.tt_ma')->orderby('donhang.dh_ma','desc')->get();
     	return view('admin.manage_order')->with('orders',$orders);
     }
 
@@ -31,19 +31,30 @@ class OrderController extends Controller
     {
     	$this->authLogin();
         $disc = DB::table('donhang')->where('donhang.dh_ma','=',$dh_ma)->first();
-        if ($disc->km_ma != NULL){
-            $order = DB::table('donhang')->join('nguoidung','nguoidung.nd_ma','donhang.nd_ma')->join('thanhtoan','thanhtoan.tt_ma','donhang.tt_ma')->join('vanchuyen','vanchuyen.vc_ma','donhang.vc_ma')->join('khuyenmai','khuyenmai.km_ma','donhang.km_ma')->where('donhang.dh_ma','=',$dh_ma)->first();
-        }else{
-             $order = DB::table('donhang')->join('nguoidung','nguoidung.nd_ma','donhang.nd_ma')->join('thanhtoan','thanhtoan.tt_ma','donhang.tt_ma')->join('vanchuyen','vanchuyen.vc_ma','donhang.vc_ma')->where('donhang.dh_ma','=',$dh_ma)->first();
-        }
-        $items = DB::table('chitietdonhang')->join('chitietsanpham','chitietsanpham.ctsp_ma','chitietdonhang.ctsp_ma')->join('sanpham','sanpham.sp_ma','chitietsanpham.sp_ma')->where('dh_ma',$dh_ma)->get();
+        // if ($disc->km_ma != NULL){
+        //     $order = DB::table('donhang')->join('nguoidung','nguoidung.nd_ma','donhang.nd_ma')->join('hinhthucthanhtoan','hinhthucthanhtoan.httt_ma','donhang.httt_ma')->join('hinhthucvanchuyen','hinhthucvanchuyen.htvc_ma','donhang.htvc_ma')->join('khuyenmai','khuyenmai.km_ma','donhang.km_ma')->where('donhang.dh_ma','=',$dh_ma)->first();
+        // }else{
+             $order = DB::table('donhang')->join('nguoidung','nguoidung.nd_ma','donhang.nd_ma')->join('hinhthucthanhtoan','hinhthucthanhtoan.httt_ma','donhang.httt_ma')->join('hinhthucvanchuyen','hinhthucvanchuyen.htvc_ma','donhang.htvc_ma')->where('donhang.dh_ma','=',$dh_ma)->first();
+        //}
+        $items = DB::table('cochitietdonhang')
+            ->leftJoin('cochitietsanpham', function($join)
+                             {
+                                 $join->on('cochitietsanpham.sp_ma', '=', 'cochitietdonhang.sp_ma');
+                                 $join->on('cochitietsanpham.kc_ma', '=', 'cochitietdonhang.kc_ma');
+                                 $join->on('cochitietsanpham.ms_ma', '=', 'cochitietdonhang.ms_ma');
+                                
+                             })
+            ->join('kichco','kichco.kc_ma','cochitietdonhang.kc_ma')
+            ->join('mausac','mausac.ms_ma','cochitietsanpham.ms_ma')
+            ->join('sanpham','sanpham.sp_ma','cochitietdonhang.sp_ma')
+            ->where('dh_ma',$dh_ma)->get();
         return view('admin.view_order')->with('order',$order)->with('items',$items); 	
     }
 
     public function orderPdf($dh_ma)
     {
         $this->authLogin();
-        $order = DB::table('donhang')->join('nguoidung','nguoidung.nd_ma','donhang.nd_ma')->join('thanhtoan','thanhtoan.tt_ma','donhang.tt_ma')->join('vanchuyen','vanchuyen.vc_ma','donhang.vc_ma')->where('donhang.dh_ma','=',$dh_ma)->first();
+        $order = DB::table('donhang')->join('nguoidung','nguoidung.nd_ma','donhang.nd_ma')->join('hinhthucthanhtoan','hinhthucthanhtoan.httt_ma','donhang.httt_ma')->join('hinhthucvanchuyen','hinhthucvanchuyen.htvc_ma','donhang.htvc_ma')->where('donhang.dh_ma','=',$dh_ma)->first();
         $items = DB::table('chitietdonhang')->join('chitietsanpham','chitietsanpham.ctsp_ma','chitietdonhang.ctsp_ma')->join('sanpham','sanpham.sp_ma','chitietsanpham.sp_ma')->where('dh_ma',$dh_ma)->get();
         return view('admin.order_pdf')->with('order',$order)->with('items',$items);    
     }
@@ -53,7 +64,7 @@ class OrderController extends Controller
         $this->authLogin();
         try {
     
-            $count = DB::table('donhang')->where('dh_ma', $dh_ma)->update(['dh_trangThai' => 'Đã xử lý']);
+            $count = DB::table('donhang')->where('dh_ma', $dh_ma)->update(['tt_ma' => 2]);
             Session::put('success_message','Cập nhật trạng thái đơn hàng thành công!');
             
         } catch (\Illuminate\Database\QueryException $e) {
@@ -67,7 +78,7 @@ class OrderController extends Controller
         $this->authLogin();
         try {
     
-            $count = DB::table('donhang')->where('dh_ma', $dh_ma)->update(['dh_trangThai' => 'Đang giao']);
+            $count = DB::table('donhang')->where('dh_ma', $dh_ma)->update(['tt_ma' => 3]);
             Session::put('success_message','Cập nhật trạng thái đơn hàng thành công!');
             
         } catch (\Illuminate\Database\QueryException $e) {
@@ -82,7 +93,7 @@ class OrderController extends Controller
         $this->authLogin();
         try {
     
-            $count = DB::table('donhang')->where('dh_ma', $dh_ma)->update(['dh_trangThai' => 'Đã giao']);
+            $count = DB::table('donhang')->where('dh_ma', $dh_ma)->update(['tt_ma' => 4]);
             Session::put('success_message','Cập nhật trạng thái đơn hàng thành công!');
             
         } catch (\Illuminate\Database\QueryException $e) {
@@ -96,7 +107,7 @@ class OrderController extends Controller
         $this->authLogin();
         try {
     
-            $count = DB::table('donhang')->where('dh_ma', $dh_ma)->update(['dh_trangThai' => 'Đã hủy']);
+            $count = DB::table('donhang')->where('dh_ma', $dh_ma)->update(['tt_ma' => 5]);
             Session::put('success_message','Cập nhật trạng thái đơn hàng thành công!');
             $items_cancel = DB::table('chitietdonhang')->join('chitietsanpham','chitietdonhang.ctsp_ma','chitietsanpham.ctsp_ma')->where('dh_ma', $dh_ma)->select('chitietdonhang.ctsp_ma','chitietdonhang.soLuongDat','chitietsanpham.ctsp_soLuongTon')->get();
             foreach ($items_cancel as $key => $item) {

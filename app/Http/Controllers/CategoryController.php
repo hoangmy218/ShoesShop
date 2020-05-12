@@ -29,8 +29,14 @@ class CategoryController extends Controller
         $data = array();
         $data['dm_ma'] = $request->cate_id;
         $data['dm_ten'] = $request->cate_name;
-        Db::table('danhmuc')->insert($data);
-        Session::put('message','The category was added successfully.');
+        try{ 
+            Db::table('danhmuc')->insert($data);
+              Session::put('success_message_cate','Thêm danh mục thành công!');
+            
+        } catch (\Illuminate\Database\QueryException $e) {
+            Session::put('fail_message_cate','Thêm danh mục không thành công!');
+        }
+
         return Redirect::to('/manage-category');
     }
 
@@ -43,25 +49,35 @@ class CategoryController extends Controller
     }
 
     public function editCategory($category_id){
-         $this->authLogin();
+        $this->authLogin();
         $edit_categories = DB::table('danhmuc')->where('dm_ma',$category_id)->get(); //Lấy 1 sản phẩm
         $manager_category = view('admin.edit_category')->with('edit_cate',$edit_categories);
         return view('admin_layout')->with('admin.edit_category', $manager_category);
-        /*return view('admin.manage_category');*/
+       
     }
 
      public function updateCategory(Request $request,$category_id){
         $data = array();
-        $data['dm_ma'] = $request->cate_id;
         $data['dm_ten'] = $request->cate_name;
-        DB::table('danhmuc')->where('dm_ma',$category_id)->update($data);
-        Session::put('message','The category was updated successfully.');
+        try{
+            DB::table('danhmuc')->where('dm_ma',$category_id)->update($data);
+            Session::put('success_message_cate','Chỉnh sửa danh mục thành công!');
+            
+        } catch (\Illuminate\Database\QueryException $e) {
+            Session::put('fail_message_cate','Chỉnh sửa danh mục không thành công!');
+        }
         return Redirect::to('/manage-category');
     }
 
     public function deleteCategory($category_id){
-        DB::table('danhmuc')->where('dm_ma',$category_id)->delete();
-        Session::put('message','The category was deleted successfully.');
-        return Redirect::to('/manage-category');
+        try{
+            DB::table('danhmuc')->where('dm_ma',$category_id)->delete();
+            Session::put('success_message_cate','Xoá danh mục thành công!');
+            
+        } catch (\Illuminate\Database\QueryException $e) {
+            Session::put('fail_message_cate','Xoá danh mục không thành công!');
+        }
+        
+        // return Redirect::to('/manage-category');
     }
 }

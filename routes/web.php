@@ -43,6 +43,42 @@ Route::get('switchlang/{locale}', function ($locale) {
 
 });
 
+//Comment   Tien 21/03
+Route::post('comment/{id}','CommentController@postComment');//Tiên 13/03
+
+Route::get('/manage-comment','CommentController@showComment'); 
+Route::get('/unactive-comment/{nd_ma}/{sp_ma}/{ngayBinhLuan}', 'CommentController@unactive_comment');// Tiên 08/05
+Route::get('/active-comment/{nd_ma}/{sp_ma}/{ngayBinhLuan}', 'CommentController@active_comment');// Tiên 08/05
+
+Route::get('/getSlt','ProductController@getSlt');//Tiên 07/05
+
+//Tien 09/05 MauSac
+Route::get('/add-color','ColorController@addColor');
+
+Route::post('/save-color','ColorController@saveColor');
+
+Route::get('/manage-color','ColorController@showColor');
+
+Route::get('/edit-color/{ms_ma}','ColorController@edit_Color');
+
+Route::post('/update-color/{ms_ma}','ColorController@update_Color');
+
+Route::get('/delete-color/{ms_ma}','ColorController@delete_Color');
+
+//Tien 09/05  KichCo
+Route::get('/add-size','SizeController@addSize');
+
+Route::post('/save-size','SizeController@saveSize');
+
+Route::get('/manage-size','SizeController@showSize');
+
+Route::get('/edit-size/{kc_ma}','SizeController@edit_Size');
+
+Route::post('/update-size/{kc_ma}','SizeController@update_Size');
+
+Route::get('/delete-size/{kc_ma}','SizeController@delete_Size');
+
+
 
 //LAN
 Route::get('/info-customer', 'HomeController@info_customer');
@@ -53,10 +89,7 @@ Route::post('capnhat-thongtin/{capnhat_nd_ma}','HomeController@capnhat_thongtin'
 //Product
 Route::get('/product-detail/{product_id}','ProductController@details_product');//Tiên
 
-Route::post('comment/{id}','CommentController@postComment');//Tiên 13/03
-Route::get('/manage-comment','CommentController@showComment'); 
-Route::get('/unactive-comment/{controll_bl_id}', 'CommentController@unactive_comment');
-Route::get('/active-comment/{controll_bl_id}', 'CommentController@active_comment');
+
 
 Route::get('/all-product','ProductController@all_product');//Tiên
 
@@ -196,9 +229,11 @@ Route::get('/delete-receipt/{pn_ma}','ProductController@deleteReceipt');
 Route::get('/getDateReceipt','ProductController@getDateReceipt');
 Route::post('/save-edit-receipt/{pn_ma}','ProductController@saveEditReceipt');
 
+Route::get('/update-Price','ProductController@updateSumPrice');
+
 Route::get('/delete-goods/{ctsp_ma}','ProductController@deleteGoods');
 Route::get('/getDetailGoods','ProductController@getDetailGoods');
-Route::post('/save-edit-goods/{ctsp_ma}','ProductController@saveEditGoods');
+Route::post('/save-edit-goods/{pn_ma}','ProductController@saveEditGoods');
 
 //Phuong thuc thanh toan
 Route::get('/manage-pay','PayController@manage_pay');

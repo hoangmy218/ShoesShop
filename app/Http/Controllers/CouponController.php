@@ -26,18 +26,18 @@ class CouponController extends Controller
 
     public function saveCoupon(Request $request){
         $this->authLogin();
+        try{
         $data = array();
-        $data['km_doanMa'] = $request->coupon_code;
         $data['km_chuDe'] = $request->coupon_topic;
-        // start Ngân (7/4/2020)
         $data['km_ngayBD'] = $request->coupon_dateB;
         $data['km_ngayKT'] = $request->coupon_dateE;
         $data['km_giamGia'] = $request->coupon_discount;
-        $data['km_soLan'] = $request->coupon_discount_SL;
-        // end Ngân (7/4/2020)
 
         Db::table('khuyenmai')->insert($data);
-        Session::put('message','Thêm thành công');
+        Session::put('success_message','Thêm khuyến mãi thành công!');
+        } catch (\Illuminate\Database\QueryException $e) {
+            Session::put('fail_message','Thêm khuyến mãi không thành công!');
+        }
         return Redirect::to('/manage-coupon');
     }
 
@@ -58,22 +58,28 @@ class CouponController extends Controller
     }
 
     public function updateCoupon(Request $request,$Coupon_id){
+        $this->authLogin();
+        try{
         $data = array();
-        $data['km_doanMa'] = $request->coupon_code;
         $data['km_chuDe'] = $request->coupon_topic;
-        // start Ngân (7/4/2020)
         $data['km_giamGia'] = $request->coupon_discount;
         $data['km_ngayBD'] = $request->coupon_dateB;
         $data['km_ngayKT'] = $request->coupon_dateE;
-        $data['km_soLan'] = $request->coupon_discount_SL;
-        // end Ngân (7/4/2020)
         DB::table('khuyenmai')->where('km_ma',$Coupon_id)->update($data);
-        Session::put('message','Cập nhật thành công');
+        Session::put('success_message','Chỉnh sửa khuyến mãi thành công!');
+        } catch (\Illuminate\Database\QueryException $e) {
+            Session::put('fail_message','Chỉnh sửa khuyến mãi không thành công!');
+        }
         return Redirect::to('/manage-coupon');
     }
     public function deleteCoupon($Coupon_id){
+        $this->authLogin();
+        try{
         DB::table('khuyenmai')->where('km_ma',$Coupon_id)->delete();
-        Session::put('message','Xóa thành công');
-        return Redirect::to('/manage-coupon');
+        Session::put('success_message','Xoá khuyến mãi thành công!');
+        } catch (\Illuminate\Database\QueryException $e) {
+            Session::put('fail_message','Xoá khuyến mãi không thành công!');
+        }
+
     }
 }

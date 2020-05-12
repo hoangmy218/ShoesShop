@@ -66,25 +66,13 @@
                                     <input type="password" name="admin_password" class="form-control" placeholder="Mật khẩu" required="">
                                     <i class="ik ik-lock"></i>
                                 </div>
-                                <!-- <div class="row">
-                                    <div class="col text-left">
-                                        <label class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="item_checkbox" name="item_checkbox" value="option1">
-                                            <span class="label">&nbsp;Remember Me</span>
-                                        </label>
-                                    </div>
-                                    <div class="col text-right">
-                                        <a href="forgot_pass.html">Forgot Password ?</a>
-                                    </div>
-                                </div> -->
+                                
                                 <div class="sign-btn text-center">
                                     <button type="submit" class="btn btn-theme">Đăng nhập</button>
                                 </div>
                             </form>
-
-                            <div class="register">
-                                <p>Chưa có tài khoản? <a href="register.html" style="color: red">Tạo tài khoản</a></p>
-                            </div>
+                            <!-- Ngân (7/5/2020) bỏ dòng <div class="register"> -->
+                            
                         </div>
                     </div>
                 </div>

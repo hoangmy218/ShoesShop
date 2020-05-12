@@ -15,11 +15,15 @@ class HomeController extends Controller
     
     // Ngân (11/3/2020) paste lại nguyên cái public authLogin
     public function authLogin(){
-        $cv=Session::get('cv_ma');
-        if ($cv==2) 
+         $ltk=Session::get('ltk_ma');
+        if ($ltk==2) 
             return Redirect::to('/Home_u'); 
         else 
             return Redirect::to('/userLogin')->send();
+
+        // if(Auth::check()){
+        //     view()->share('nguoidung',Auth::user());
+        // }
     }
     public function index()
     {
@@ -223,10 +227,16 @@ class HomeController extends Controller
         return view('pages.customer.view_customerdetails')->with('order',$order)->with('items',$items);
     }
 
-      public function search(Request $request){// Tiên 15/03
+    public function search(Request $request){// Tiên 08/05
 
         $keywords = $request->keywords_submit;
         $search = DB::table('sanpham')->join('hinhanh','hinhanh.sp_ma','=','sanpham.sp_ma')->where('sp_ten','like','%'.$keywords.'%')->get(); 
+           
+        if(!($search->isempty())){
+           Session::put('success_message','Tìm kiếm sản phẩm thành công !');
+        }else{
+             Session::put('fail_message','Không tìm thấy sản phẩm !');
+        }
 
         return view('pages.product.search')->with('search',$search);
     }

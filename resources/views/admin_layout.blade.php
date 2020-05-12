@@ -64,15 +64,37 @@
                                     {{-- <img class="avatar" src="{{asset('public/backend/img/user.jpg')}}" alt=""> --}}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                                   
-                                    <a class="dropdown-item" href="{{URL::to('/logout')}}"><i class="ik ik-power dropdown-icon"></i>Đăng xuất</a>
+                                   <!-- start Ngân (7/5/2020) -->
+                                    <a class="dropdown-item logout" ><i class="ik ik-power dropdown-icon"></i>Đăng xuất</a>
+                                    <!-- end Ngân (7/5/2020) -->
                                 </div>
                             </div>
 
                         </div>
+                        
                     </div>
                 </div>
             </header>
+
+<!-- start Ngân (7/5/2020) -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="demoModalLabel">Đăng xuất</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <span>Bạn có chắc chắn muốn đăng xuất tài khoản này?</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                    <button type="button" id="ok_logout_btn" class="btn btn-success">Xác nhận</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- end Ngân (7/5/2020) -->
 
             <div class="page-wrap">
                 <div class="app-sidebar colored">
@@ -108,13 +130,30 @@
                                     <a id="sanpham" href="javascript:void(0)"><i class="ik ik-package"></i><span>Quản lý sản phẩm</span> <span class="badge badge-danger"></span></a>
                                     <div class="submenu-content">
                                         <a id="themsanpham" href="{{URL::to('/add-product')}}" class="menu-item">Thêm sản phẩm</a>
-
                                         <a id="danhsachsanpham" href="{{URL::to('/manage-product')}}" class="menu-item">Danh sách sản phẩm</a>
-                                        <a id="kichco" href="{{URL::to('/manage-size')}}" class="menu-item">Quản lý kích cỡ</a>
-                                        <a id="mausac" href="{{URL::to('/manage-color')}}" class="menu-item">Quản lý màu sắc</a>
                                         
                                     </div>
                                 </div>
+                                <!--  Tiên 09/05 -->
+                                <div class="nav-item has-sub">
+                                    <a id="mausac" href="javascript:void(0)"><i class="ik ik-speaker ik-1x"></i><span>Quản lý màu sắc</span> <span class="badge badge-danger"></span></a>
+                                    <div class="submenu-content">
+                                        <a id="themmausac" href="{{URL::to('/add-color')}}" class="menu-item">Thêm màu sắc</a>
+                                        <a id="danhsachmausac" href="{{URL::to('/manage-color')}}" class="menu-item">Danh sách màu sắc</a>
+                                        
+                                    </div>
+                                </div>
+
+                                <!--  Tiên 09/05 -->
+                                <div class="nav-item has-sub">
+                                    <a id="mausac" href="javascript:void(0)"><i class="ik ik-chevrons-down ik-1x"></i><span>Quản lý kích cỡ</span> <span class="badge badge-danger"></span></a>
+                                    <div class="submenu-content">
+                                        <a id="themkichco" href="{{URL::to('/add-size')}}" class="menu-item">Thêm kích cỡ</a>
+                                        <a id="danhsachkichco" href="{{URL::to('/manage-size')}}" class="menu-item">Danh sách kích cỡ</a>
+                                        
+                                    </div>
+                                </div>
+
                                 <div class="nav-item has-sub">
                                     <a id="thuonghieu" href="javascript:void(0)"><i class="ik ik-award"></i><span>Quản lý thương hiệu</span> <span class="badge badge-danger"></span></a>
                                     <div class="submenu-content">
@@ -132,15 +171,7 @@
                                     </div>
                                 </div>
                                 <div class="nav-item has-sub">
-                                    <a id="nhacungcap" href="javascript:void(0)"><i class="ik ik-home"></i><span>Quản lý nhà cung cấp</span> <span class="badge badge-danger"></span></a>
-                                    <div class="submenu-content">
-                                        <a id="themnhacungcap" href="{{URL::to('/add-supplier')}}" class="menu-item">Thêm nhà cung cấp</a>
-                                        <a id="danhsachnhacungcap" href="{{URL::to('/manage-suppliers')}}" class="menu-item">Danh sách nhà cung cấp</a>
-                                       
-                                    </div>
-                                </div>
-                                <div class="nav-item has-sub">
-                                    <a id="kho" href="javascript:void(0)"><i class="ik ik-archive"></i><span>Quản lý kho</span> <span class="badge badge-danger"></span></a>
+                                    <a id="kho" href="javascript:void(0)"><i class="ik ik-home"></i><span>Quản lý kho</span> <span class="badge badge-danger"></span></a>
                                     <div class="submenu-content">
                                         <a id="nhaphang" href="{{URL::to('/add-goods-receipt')}}" class="menu-item">Nhập hàng</a>
                                         <a id="phieunhap" href="{{URL::to('/manage-goods-receipt')}}" class="menu-item">Quản lý phiếu nhập</a>
@@ -156,14 +187,13 @@
                                     </div>
                                 </div>
                                 <div class="nav-item has-sub">
-                                    <a id="thanhtoan" href="javascript:void(0)"><i class="ik ik-dollar-sign"></i><span>Hình thức thanh toán</span> <span class="badge badge-danger"></span></a>
+                                    <a id="thanhtoan" href="javascript:void(0)"><i class="ik ik-dollar-sign"></i><span>Phương thức thanh toán</span> <span class="badge badge-danger"></span></a>
                                     <div class="submenu-content">
-                                        <a id="themthanhtoan" href="{{URL::to('/add-pay')}}" class="menu-item">Thêm hình thức thanh toán</a>
-                                        <a id="danhsachthanhtoan" href="{{URL::to('/manage-pay')}}" class="menu-item">Danh sách hình thức <br> thanh toán</a>
+                                        <a id="themthanhtoan" href="{{URL::to('/add-pay')}}" class="menu-item">Thêm phương thức thanh toán</a>
+                                        <a id="danhsachthanhtoan" href="{{URL::to('/manage-pay')}}" class="menu-item">Danh sách phương thức <br> thanh toán</a>
                                        
                                     </div>
                                 </div>
-                                 <!-- Start Ngân (1/4/2020) -->
                                 <div class="nav-item has-sub">
                                     <a id="thongke" href="javascript:void(0)"><i class="ik ik-bar-chart-2"></i><span>Thống kê</span> <span class="badge badge-danger"></span></a>
                                     <div class="submenu-content">
@@ -172,7 +202,6 @@
                                        
                                     </div>
                                 </div>
-                                <!-- Start Ngân (13/3/2020) -->
                                 <div class="nav-item has-sub">
                                     <a id="khuyenmai" href="javascript:void(0)"><i class="ik ik-gift"></i><span>Quản lý khuyến mãi</span> <span class="badge badge-danger"></span></a>
                                     <div class="submenu-content">
@@ -456,5 +485,27 @@
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
+<!-- start Ngân (7/5/2020) -->
+        <script>
+          $(document).ready(function(){
+
+                  $(document).on('click','.logout', function(){
+                      $('#logoutModal').modal('show');
+
+                  });
+
+                  $('#ok_logout_btn').click(function(){
+                      $.ajax({
+                          url: '<?php echo url('logout');?>',
+                          type: 'get',
+                          success: function(data)
+                          {
+                              window.location.replace("<?php echo url('/admin');?>");
+                          }
+                      });
+                  });
+               });
+          </script>
+<!-- end Ngân (7/5/2020) -->
     </body>
 </html>

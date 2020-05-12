@@ -18,9 +18,23 @@
     <section class="ftco-section bg-light">
         <div class="container">
             <div class="row justify-content-center mb-3 pb-3">
-              <!-- <div class="col-md-12 heading-section text-center ftco-animate">
+              <div class="col-md-12 heading-section text-center ftco-animate">
                 <h2 class="mb-4">{{ __('Kết Quả Tìm Kiếm') }}</h2>
-              </div> -->
+              </div>
+                        <?php
+                            $message = Session::get('fail_message');
+                            if ($message){
+                                echo '<span class="alert alert-danger">'.$message."</span>";
+                                
+                                Session::put('fail_message',null);
+                            }
+                            $message = Session::get('success_message');
+                            if ($message){
+                                echo '<span class="alert alert-success">'.$message."</span>";
+                                
+                                Session::put('success_message',null);
+                            }
+                        ?>
             </div>          
         </div>
         <div class="container">
@@ -69,6 +83,21 @@
             </div>
         </div>
     </section>
+
+    <!--  Tien 07/05 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="http://www.codermen.com/js/jquery.js"></script>
+<script>
+$(document).ready(function(){
+         
+         //dat thi gian tat thong bao
+        setTimeout(function(){
+           $("span.alert").remove();
+        }, 5000 ); // 5 secs
+
+});
+</script>
               
         <!--/recommended_items-->
 @endsection

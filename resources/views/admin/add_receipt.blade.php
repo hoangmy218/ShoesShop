@@ -104,43 +104,61 @@
                                                 <div class="form-group" style="padding-bottom: 10px;">
                                                     <label for="date">Ngày nhập</label>
                                                     <input type="text" name="ngayNhap" class="form-control datetimepicker-input" id="datepicker" data-toggle="datetimepicker" data-target="#datepicker">
-                                                </div>                                                        
+                                                </div> 
+
+                                                                                                          
                                             </div>
+                                            <div class="row col-md-12">
+                                                <div class="form-group" style="padding-bottom: 10px;">
+                                                    <label for="date">Nhà cung cấp</label>
+
+                                                       <select class="form-control" name="nhacungcap" >
+                                                            @foreach($list_suppliers as $key => $supllier)
+                                                                <option value="{{$supllier->ncc_ma}}">{{$supllier->ncc_ten}}&ensp;</option>                                                  
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             <?php 
                                                 $count=1;
                                             ?>
                                                   
-                                            <div class="row">
+                                            <div class="row col-md-12">
                                             <div data-repeater-list="group-a">
                                                 <div data-repeater-item="item-a" class="d-flex mb-2">
                                                     <label for="exampleInputName1">Tên sản phẩm </label>
                                                     <div class="form-group  mb-2 mr-sm-2 mb-sm-0">
                                                        <select class="form-control" name="masp" >
                                                             @foreach($list_pro as $key => $pro)
-                                                                <option value="{{$pro->sp_ma}}">{{$pro->sp_ten}}</option>                                                  
+                                                                <option value="{{$pro->sp_ma}}">{{$pro->sp_ten}}&ensp;</option>                                                  
+                                                            @endforeach
+                                                        </select>
+                                                    </div>                                                   
+                                                    <label for="exampleInputName1">Màu sắc </label>
+                                                    <div class="form-group  mb-2 mr-sm-2 mb-sm-0">
+                                                       <select class="form-control" name="mams" >
+                                                            @foreach($list_col as $key => $col)
+                                                                <option value="{{$col->ms_ma}}">{{$col->ms_ten}}&ensp;</option>                                                  
                                                             @endforeach
                                                         </select>
                                                     </div>
-                                                    {{-- <label for="exampleInputName1">Giá nhập</label>
-                                                    <div class="form-group mb-2 mr-sm-2 mb-sm-0">
-                                                        <input type="number" class="form-control" name="giaNhap" min="100000" step="5000" max="5000000" value="100000">
-                                                    </div>
-                                                    <label for="exampleInputName1">Giá bán</label>
-                                                    <div class="form-group mb-2 mr-sm-2 mb-sm-0">
-                                                        <input type="number" class="form-control" name="giaBan" min="100000" step="5000" max="5000000" value="100000">
-                                                    </div> --}}
                                                     <label for="exampleInputName1">Kích cỡ </label>
-                                                    <div class="form-group mb-2 mr-sm-2 mb-sm-0">
-                                                        <input type="number" class="form-control" name="kichCo" min="1" step="0.5" max="40" value="35">
+                                                    <div class="form-group  mb-2 mr-sm-2 mb-sm-0">
+                                                       <select class="form-control" name="makc" >
+                                                            @foreach($list_sz as $key => $sz)
+                                                                <option value="{{$sz->kc_ma}}">{{$sz->kc_ten}}&ensp;</option>                                                  
+                                                            @endforeach
+                                                        </select>
                                                     </div>
+
                                                     <label for="exampleInputName1">Số lượng nhập </label>
                                                     <div class="form-group mb-2 mr-sm-2 mb-sm-0">
-                                                        <input type="number" class="form-control" name="soLuongNhap" min="1" step="1" max="40" value="10">
+                                                        <input type="number" class="form-control" name="SoLuongNhap" min="1" step="1" max="40" value="10">
                                                     </div>
-                                                   {{--  <label for="exampleInputName1">Đơn giá nhập </label>
+                                                    <label for="exampleInputName1">Đơn giá nhập </label>
                                                     <div class="form-group  mb-2 mr-sm-2 mb-sm-0">
-                                                        <input type="text" class="form-control" name="donGiaNhap" placeholder="100000">
-                                                    </div> --}}
+                                                        <input type="number" class="form-control" name="DonGiaNhap" min="50000" step="1000" max="10000000" value="50000">
+                                                    </div>
                                                     <button data-repeater-delete type="button" class="btn btn-danger btn-icon ml-2" ><i class="ik ik-trash-2"></i></button>
                                                 </div>
                                             </div>
