@@ -21,7 +21,7 @@
                                                 <a href="{{URL::to('/dashboard')}}"><i class="ik ik-home"></i></a>
                                             </li>
                                             <li class="breadcrumb-item">
-                                                <a href="{{URL::to('/manage-transport')}}">Quản lý vận chuyển</a>
+                                                <a href="{{URL::to('/manage-category')}}">Quản lý vận chuyển</a>
                                             </li>
                                             <li class="breadcrumb-item active" aria-current="page">Thêm hình thức vận chuyển</li>
                                         </ol>

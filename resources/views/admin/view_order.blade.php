@@ -23,9 +23,7 @@
                                             <li class="breadcrumb-item">
                                                 <a href="{{URL::to('/manage-order')}}">Quản lý đơn hàng</a>
                                             </li>
-                                            <li class="breadcrumb-item active" aria-current="page">
-                                                <a href="{{URL::to('/view-history/'.$order->nd_ma)}}">Lịch sử đơn</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Chi tiết đơn</li>
+                                            <li class="breadcrumb-item active" aria-current="page">Chi tiết đơn hàng</li>
                                         </ol>
                                     </nav>
                                 </div>

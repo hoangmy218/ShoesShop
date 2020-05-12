@@ -68,7 +68,19 @@ class ProductController extends Controller
     	$manager_product = view('admin.manage_product')->with('list_pro', $list_products);
     	return view('admin_layout')->with('admin.manage_product', $manager_product);
     }
- 
+    //Tien thêm getSlt xóa hàm getSlt bên SocksController 07/05
+    public function getSlt(Request $request)
+    {
+        
+        $stocks = DB::Table('cochitietsanpham')->select('soLuongTon')->where([['kc_ma','=',$request->kc_ma],['ms_ma','=',$request->ms_ma],['sp_ma','=',$request->sp_ma]])->first(); 
+        return json_encode($stocks);
+        /*
+        $stocks = DB::Table('chitietsanpham')->select('ctsp_soLuongTon')->where([['sp_ma',$request->sp_ma],['ctsp_kichCo',$request->size_id]])->first(); 
+        return json_encode($stocks);
+
+        $stocks = Stock::where('size_id',$request->size_id)->pluck('stock_number','stock_id');
+        return json_encode($stocks);*/
+    }
     public function details_product($product_id){
 
 
@@ -76,20 +88,22 @@ class ProductController extends Controller
         $image_product =  DB::table('hinhanh')->where('hinhanh.sp_ma',$product_id)->get(); 
 
         $details_product = DB::table('sanpham')->join('hinhanh','hinhanh.sp_ma','=','sanpham.sp_ma')->join('thuonghieu', 'thuonghieu.th_ma','=','sanpham.th_ma')->where('sanpham.sp_ma',$product_id)->limit(1)->get(); 
-        $sz_product = DB::table('chitietsanpham')->where([['chitietsanpham.sp_ma','=',$product_id],['ctsp_soLuongTon','>',0]])->orderby('ctsp_kichCo','asc')->get(); 
+        // tien 08/05
+        $sz_product = DB::table('cochitietsanpham')->join('kichco','kichco.kc_ma','=','cochitietsanpham.kc_ma')->join('mausac','mausac.ms_ma','=','cochitietsanpham.ms_ma')->where([['cochitietsanpham.sp_ma','=',$product_id],['soLuongTon','>',0]])->orderby('cochitietsanpham.kc_ma','asc')->orderby('cochitietsanpham.ms_ma','asc')->get(); 
+
 
         $all_product = DB::table('sanpham')->select('sp_ma')->where('sanpham.sp_ma',$product_id)->limit(1)->get(); //Tiên 14/03
 
    
-        $sizes = DB::Table('chitietsanpham')->select('ctsp_kichCo','ctsp_soLuongTon','ctsp_ma')->where('chitietsanpham.sp_ma',$product_id)->get(); // Tiên 12/03
+        $sizes = DB::Table('cochitietsanpham')->select('kc_ma','soLuongTon')->where('cochitietsanpham.sp_ma',$product_id)->get(); // Tiên 12/03
         
-        $sold_product=DB::table('chitietdonhang')->join('chitietsanpham','chitietsanpham.ctsp_ma','=','chitietdonhang.ctsp_ma')->where('chitietsanpham.sp_ma',$product_id)->select('soLuongDat')->sum('soLuongDat'); //Tien 18/03
+        $sold_product=DB::table('cochitietdonhang')->join('sanpham','sanpham.sp_ma','=','cochitietdonhang.sp_ma')->where('cochitietdonhang.sp_ma',$product_id)->select('soLuongDat')->sum('soLuongDat'); //Tien 11/05  
 
-        $comments = Comment::where('sp_ma',$product_id)->where('bl_trangthai','=',0)->get(); // Tiên 14/03
+        $comments = Comment::where('sp_ma',$product_id)->join('nguoidung','nguoidung.nd_ma','=','binhluan.nd_ma')->where('trangThai','=',0)->get(); // Tiên 06/05
 
         $total_view=DB::table('binhluan')->join('sanpham','sanpham.sp_ma','=','binhluan.sp_ma')->where('binhluan.sp_ma',$product_id)->select('sp_ma')->count();
 
-         return view('pages.product.show_detail',compact('chitietsanpham'))->with('details_product',$details_product)->with('sz_product',$sz_product)->with('sizes',$sizes)->with('all_product',$all_product)->with('comments',$comments)->with('sold_product',$sold_product)->with('total_view',$total_view)->with('image_product',$image_product);
+         return view('pages.product.show_detail',compact('cochitietsanpham'))->with('details_product',$details_product)->with('sz_product',$sz_product)->with('sizes',$sizes)->with('all_product',$all_product)->with('comments',$comments)->with('total_view',$total_view)->with('image_product',$image_product)->with('sold_product',$sold_product);
     }
 
 
