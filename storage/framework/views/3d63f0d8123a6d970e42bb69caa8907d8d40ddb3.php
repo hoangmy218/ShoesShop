@@ -1,5 +1,4 @@
-@extends('admin_layout')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
                        
 
@@ -12,10 +11,10 @@
                     <div class="page-header-title">
                         <i class="ik ik-credit-card bg-blue"></i>
                         <div class="d-inline">
-                            @foreach($list as $key => $sp)
-                            <h5> Mã {{$sp->sp_ma}} : {{$sp->sp_ten}}</h5>
-                                                    {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
-                            @endforeach
+                            <?php $__currentLoopData = $list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $sp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <h5> Mã <?php echo e($sp->sp_ma); ?> : <?php echo e($sp->sp_ten); ?></h5>
+                                                    
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                     </div>
                 </div>
@@ -23,10 +22,10 @@
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="{{URL::to('/dashboard')}}"><i class="ik ik-home"></i></a>
+                                <a href="<?php echo e(URL::to('/dashboard')); ?>"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item active">
-                                <a href="{{URL::to('/manage-product')}}">Quản lý sản phẩm</a>
+                                <a href="<?php echo e(URL::to('/manage-product')); ?>">Quản lý sản phẩm</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">Chi tiết sản phẩm</li>
                         </ol>
@@ -34,7 +33,7 @@
                  </div>
             </div>
         </div>
-        {{-- THÊM+CHỈNH SƯA --}}
+        
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -57,15 +56,15 @@
                                         $hinhanh= DB::table('hinhanh')->where('sp_ma',$sp->sp_ma)->get();
                                         ?>
                                     <?php $i=1; ?>
-                                    @foreach( $hinhanh as $key => $ha)
+                                    <?php $__currentLoopData = $hinhanh; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $ha): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
-                                        <th scope="row">{{$i}}</th>
-                                        <th scope="row">{{$ha->ha_ma}}</th>
-                                        <th scope="row">{{$ha->ha_ten}}</th>
-                                        <td><img src="{{URL::to('public/upload/product/'.$ha->ha_ten)}}" height="100" width="100"></td> 
+                                        <th scope="row"><?php echo e($i); ?></th>
+                                        <th scope="row"><?php echo e($ha->ha_ma); ?></th>
+                                        <th scope="row"><?php echo e($ha->ha_ten); ?></th>
+                                        <td><img src="<?php echo e(URL::to('public/upload/product/'.$ha->ha_ten)); ?>" height="100" width="100"></td> 
                                     </tr>
                                     <?php $i++; ?>
-                                    @endforeach 
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
                                 </tbody>
                             </table>
                         </div>
@@ -94,15 +93,15 @@
                                 </thead>
                                 <tbody>
                                     <?php $i=1; ?>
-                                    @foreach( $data as $key => $dt)
+                                    <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $dt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
-                                        <th scope="row">{{$i}}</th>
-                                        <th scope="row">{{$dt->ms_ten}}</th>
-                                        <th scope="row">{{$dt->kc_ten}}</th>
-                                        <th scope="row">{{$dt->soLuongTon}}</th>
+                                        <th scope="row"><?php echo e($i); ?></th>
+                                        <th scope="row"><?php echo e($dt->ms_ten); ?></th>
+                                        <th scope="row"><?php echo e($dt->kc_ten); ?></th>
+                                        <th scope="row"><?php echo e($dt->soLuongTon); ?></th>
                                     </tr>
                                     <?php $i++; ?>
-                                    @endforeach 
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
                                 </tbody>
                             </table>
                         </div>
@@ -113,20 +112,16 @@
             <div class="col-4">
                  <div class="row">
                             <div class="col-12">
-                                {{-- <p class="lead">Tổng số lượng nhập:
-                                    @foreach( $tongslnhap as $key => $slnhap)
-                                        <b>{{$slnhap->slnhap}}</b>
-                                    @endforeach 
-                                </p>  --}}
+                                
                                 <p class="lead">Tổng số lượng tồn:
-                                     @foreach( $tongslton as $key => $slton)
-                                        <b>{{$slton->slton}}</b>   
-                                    @endforeach 
+                                     <?php $__currentLoopData = $tongslton; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $slton): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <b><?php echo e($slton->slton); ?></b>   
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
                                 </p>
                                 <p class="lead">Mô tả:
-                                     @foreach( $list as $key => $sp)
-                                        <b>{{$sp->sp_moTa}}</b>   
-                                    @endforeach 
+                                     <?php $__currentLoopData = $list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $sp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <b><?php echo e($sp->sp_moTa); ?></b>   
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
                                 </p>
                                         
                             </div>
@@ -144,4 +139,6 @@ $(document).ready(function(){
          $("#danhsachsanpham").addClass("active");
      });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin_layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views/admin/chitiet_sanpham.blade.php ENDPATH**/ ?>

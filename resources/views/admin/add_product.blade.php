@@ -11,7 +11,7 @@
                     <div class="page-header-title">
                         <i class="ik ik-file-text bg-blue"></i>
                         <div class="d-inline">
-                        <h5>Sản phẩm</h5>
+                        <h5>Thêm sản phẩm</h5>
                                            {{--  <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                         </div>
                     </div>
@@ -70,7 +70,16 @@
                             @endforeach
                         </select>
                     </div>
-                <table width="100%">
+                    <div class="form-group">
+                                <label for="exampleSelectGender">Khuyến mãi</label>
+                                <select class="form-control" required="" name="pro_km" id="exampleSelectGender">
+                                    <option value="">Chọn khuyến mãi muốn áp dụng  </option>
+                                    @foreach($list_km  as $key => $km)
+                                    <option value="{{$km->km_ma}}">{{$km->km_chuDe}}</option>  
+                                    @endforeach
+                                </select>
+                            </div>
+                {{-- <table width="100%">
                     <tr>
                         <td>
                             <div class="form-group">
@@ -96,7 +105,7 @@
                             </div>
                         </td>
                     </tr>
-                </table>
+                </table> --}}
                     
                     
                     <div class="form-group">
@@ -118,31 +127,13 @@
                         <textarea required="" class="form-control" name="pro_des" id="exampleTextarea1" rows="4"></textarea>
                     </div>
                     <button type="submit" id="uploadImage" name="add_pro" class="btn btn-primary mr-2">Thêm</button>
-                    <button id ="cancel" class="btn btn-light cancel">Hủy</button>
+                    <button id ="cancel" class="btn btn-light">Hủy</button>
                 </form>
                 </div>
             </div>
         </div>
     </div>
     {{-- 07052020 --}}
-    <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="demoModalLabel">Hủy thêm sản phẩm mới</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            </div>
-                            <div class="modal-body">
-                            Bạn có chắc chắn muốn hủy thêm sản phẩm mới này?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
-                                <button type="button" id="ok_cancel_btn" class="btn btn-success">Xác nhận</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
     {{-- THÊM+CHỈNH SỬA --}}
 <script src="http://www.codermen.com/js/jquery.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.pack.js"></script>
@@ -185,17 +176,14 @@ $(document).ready(function(){
     });
 
 });
-$(document).on('click','.cancel', function(){
-            $('#cancelModal').modal('show');
-            });
-$('#ok_cancel_btn').click(function(){
-            window.location.replace("<?php echo url('/manage-product');?>");
+
+
+ $('#cancel').click(function(e){
+    e.preventDefault();
+     window.location.replace("<?php echo url('/manage-product');?>");
+            // e.preventDefault();
+            // window.history.back();
         });
- // $('#cancel').click(function(){
- //     window.location.replace("<?php echo url('/manage-product');?>");
- //            // e.preventDefault();
- //            // window.history.back();
- //        });
 </script>
 
 @endsection

@@ -8,7 +8,7 @@
                     <div class="page-header-title">
                         <i class="ik ik-file-text bg-blue"></i>
                         <div class="d-inline">
-                        <h5>Sản phẩm</h5>
+                        <h5>Thêm sản phẩm</h5>
                                            
                         </div>
                     </div>
@@ -64,33 +64,16 @@
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                     </div>
-                <table width="100%">
-                    <tr>
-                        <td>
-                            <div class="form-group">
-                                <label for="exampleSelectGender">Màu sắc</label>
-                                <select class="form-control" required="" name="pro_color" id="exampleSelectGender">
-                                    <option value="">Chọn màu sắc  </option>
-                                    <?php $__currentLoopData = $list_color; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $color): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($color->ms_ma); ?>"><?php echo e($color->ms_ten); ?></option>  
+                    <div class="form-group">
+                                <label for="exampleSelectGender">Khuyến mãi</label>
+                                <select class="form-control" required="" name="pro_km" id="exampleSelectGender">
+                                    <option value="">Chọn khuyến mãi muốn áp dụng  </option>
+                                    <?php $__currentLoopData = $list_km; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $km): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($km->km_ma); ?>"><?php echo e($km->km_chuDe); ?></option>  
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
-                        </td>
-                        <td> , </td>
-                        <td>
-                            <div class="form-group">
-                                <label for="exampleSelectGender">Kích cỡ</label>
-                                <select class="form-control" required="" name="pro_size" id="exampleSelectGender">
-                                    <option value="">Chọn kích cỡ</option>
-                                    <?php $__currentLoopData = $list_size; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $size): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($size->kc_ma); ?>"><?php echo e($size->kc_ten); ?></option>  
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </select>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+                
                     
                     
                     <div class="form-group">
@@ -109,31 +92,13 @@
                         <textarea required="" class="form-control" name="pro_des" id="exampleTextarea1" rows="4"></textarea>
                     </div>
                     <button type="submit" id="uploadImage" name="add_pro" class="btn btn-primary mr-2">Thêm</button>
-                    <button id ="cancel" class="btn btn-light cancel">Hủy</button>
+                    <button id ="cancel" class="btn btn-light">Hủy</button>
                 </form>
                 </div>
             </div>
         </div>
     </div>
     
-    <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="demoModalLabel">Hủy thêm sản phẩm mới</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            </div>
-                            <div class="modal-body">
-                            Bạn có chắc chắn muốn hủy thêm sản phẩm mới này?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
-                                <button type="button" id="ok_cancel_btn" class="btn btn-success">Xác nhận</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
     
 <script src="http://www.codermen.com/js/jquery.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.pack.js"></script>
@@ -176,17 +141,14 @@ $(document).ready(function(){
     });
 
 });
-$(document).on('click','.cancel', function(){
-            $('#cancelModal').modal('show');
-            });
-$('#ok_cancel_btn').click(function(){
-            window.location.replace("<?php echo url('/manage-product');?>");
+
+
+ $('#cancel').click(function(e){
+    e.preventDefault();
+     window.location.replace("<?php echo url('/manage-product');?>");
+            // e.preventDefault();
+            // window.history.back();
         });
- // $('#cancel').click(function(){
- //     window.location.replace("<?php echo url('/manage-product');?>");
- //            // e.preventDefault();
- //            // window.history.back();
- //        });
 </script>
 
 <?php $__env->stopSection(); ?>

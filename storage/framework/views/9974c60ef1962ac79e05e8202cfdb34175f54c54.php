@@ -1,6 +1,4 @@
-
-@extends('admin_layout')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="main-content">
                     <div class="container-fluid">
@@ -10,8 +8,8 @@
                                     <div class="page-header-title">
                                         <i class="ik ik-file-text bg-blue"></i>
                                         <div class="d-inline">
-                                            <h5>Chỉnh sửa thông tin hình thức vận chuyển</h5>
-                                           {{--  <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
+                                            <h5>Thêm hình thức vận chuyển</h5>
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -19,48 +17,44 @@
                                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
-                                                <a href="{{URL::to('/dashboard')}}"><i class="ik ik-home"></i></a>
+                                                <a href="<?php echo e(URL::to('/dashboard')); ?>"><i class="ik ik-home"></i></a>
                                             </li>
                                             <li class="breadcrumb-item">
-                                                <a href="{{URL::to('/manage-transport')}}">Quản lý hình thức vận chuyển</a>
+                                                <a href="<?php echo e(URL::to('/manage-transport')); ?>">Quản lý hình thức vận chuyển</a>
                                             </li>
-                                            <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa thông tin hình thức vận chuyển</li>
+                                            
                                         </ol>
                                     </nav>
                                 </div>
                             </div>
                         </div>
-
-
                                 <div class="card">
-                                    <div class="card-header"><h3>Chỉnh sửa thông hình thức vận chuyển</h3></div>
+                                    <div class="card-header"><h3>Thêm hình thức vận chuyển</h3></div>
                                     <div class="card-body">
-                                        @foreach($list_transport as $key => $edit)
-                                        <form class="forms-sample" action="{{URL::to('/update-transport/'.$edit->htvc_ma)}}" method="POST" enctype="multipart/form-data" >
-                                             {{csrf_field()}}
+                                        <form class="forms-sample" action="<?php echo e(URL::to('/save-transport')); ?>" method="POST">
+                                             <?php echo e(csrf_field()); ?>
+
                                             <div class="form-group">
                                                 <label for="exampleInputName1">Tên hình thức vận chuyển</label>
-                                                <input type="text" name="transport_name" class="form-control" id="exampleInputName1" value="{{$edit->htvc_ten}}">
+                                                <input type="text" class="form-control" id="exampleInputName1" name="transport_name" placeholder="Name">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputName1">Chi phí</label>
-                                                <input type="text" name="transport_price" class="form-control" id="exampleInputName1" value="{{$edit->htvc_phi}}">
+                                             <div class="form-group">
+                                                <label for="exampleInputName1">Chi phí vận chuyển</label>
+                                                <input type="text" class="form-control" id="exampleInputName1" name="transport_price" placeholder="Name">
                                             </div>
-                                            
-                                            <button type="submit" name="add_pro" class="btn btn-primary mr-2">Cập nhật</button>
+                                            <button type="submit" name="add_transport" class="btn btn-primary mr-2">Thêm</button>
                                             <button id="cancel" class="btn btn-light">Hủy</button>
                                         </form>
-                                        @endforeach
                                     </div>
                                 </div>
                             </div>
                     </div>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
 
         $('#vanchuyen').parent().addClass('active open');
-         $("#danhsachvanchuyen").addClass("active");
+         $("#themvanchuyen").addClass("active");
      });
 $('#cancel').click(function(e){
     e.preventDefault();
@@ -69,14 +63,5 @@ $('#cancel').click(function(e){
             // window.history.back();
         });
 </script>
-                
-@endsection
-
-
-@section('script_components')
-
-        <script src="{{asset('public/backend/dist/js/theme.min.js')}}"></script>
-        <script src="{{asset('public/backend/js/form-components.js')}}"></script>
-
-
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin_layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views/admin/add_transport.blade.php ENDPATH**/ ?>

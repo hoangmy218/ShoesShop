@@ -9,7 +9,7 @@
                                     <div class="page-header-title">
                                         <i class="ik ik-file-text bg-blue"></i>
                                         <div class="d-inline">
-                                            <h5>Vận chuyển</h5>
+                                            <h5>Thêm hình thức vận chuyển</h5>
                                            {{--  <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                                         </div>
                                     </div>
@@ -21,9 +21,9 @@
                                                 <a href="{{URL::to('/dashboard')}}"><i class="ik ik-home"></i></a>
                                             </li>
                                             <li class="breadcrumb-item">
-                                                <a href="{{URL::to('/manage-transport')}}">Quản lý vận chuyển</a>
+                                                <a href="{{URL::to('/manage-transport')}}">Quản lý hình thức vận chuyển</a>
                                             </li>
-                                            <li class="breadcrumb-item active" aria-current="page">Thêm hình thức vận chuyển</li>
+                                            {{-- <li class="breadcrumb-item active" aria-current="page">Thêm hình thức vận chuyển</li> --}}
                                         </ol>
                                     </nav>
                                 </div>
@@ -43,7 +43,7 @@
                                                 <input type="text" class="form-control" id="exampleInputName1" name="transport_price" placeholder="Name">
                                             </div>
                                             <button type="submit" name="add_transport" class="btn btn-primary mr-2">Thêm</button>
-                                            <button class="btn btn-light">Hủy</button>
+                                            <button id="cancel" class="btn btn-light">Hủy</button>
                                         </form>
                                     </div>
                                 </div>
@@ -56,5 +56,11 @@ $(document).ready(function(){
         $('#vanchuyen').parent().addClass('active open');
          $("#themvanchuyen").addClass("active");
      });
+$('#cancel').click(function(e){
+    e.preventDefault();
+     window.location.replace("<?php echo url('/manage-transport');?>");
+            // e.preventDefault();
+            // window.history.back();
+        });
 </script>
 @endsection

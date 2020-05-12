@@ -67,10 +67,14 @@
                                                     <tr>
                                                         <th scope="row"><?php echo e($i); ?></th>
                                                         <td><?php echo e($don_hang->dh_ma); ?></td>
-                                                        <td><?php echo e($don_hang->dh_tenNhan); ?></td>
+                                                        <td><?php echo e($don_hang->dh_tenNguoiNhan); ?></td>
                                                         <td><?php echo e(date('d-m-Y',strtotime($don_hang->dh_ngayDat))); ?></td>
                                                         <td><?php echo e($don_hang->dh_tongTien); ?></td>
-                                                        <td><?php echo e($don_hang->dh_trangThai); ?></td>
+                                                        <?php $__currentLoopData = $trangthaihang; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $tt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <?php if($tt->tt_ma==$don_hang->tt_ma): ?>
+                                                        <td><?php echo e($tt->tt_ten); ?></td>
+                                                        <?php endif; ?>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?></td>
                                                         
                                                         
                                                         <td><div class="">                                                  

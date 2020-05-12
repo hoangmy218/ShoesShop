@@ -1,5 +1,5 @@
-@extends('admin_layout')
-@section('content')
+<?php $__env->startSection('content'); ?>
+
 <div class="main-content">
                     <div class="container-fluid">
                         <div class="page-header">
@@ -8,8 +8,8 @@
                                     <div class="page-header-title">
                                         <i class="ik ik-credit-card bg-blue"></i>
                                         <div class="d-inline">
-                                            <h5>Quản lý hình thức thanh toán</h5>
-                                            {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
+                                            <h5>Quản lý hình thức vận chuyển</h5>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -17,12 +17,12 @@
                                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
-                                                <a href="{{URL::to('/dashboard')}}"><i class="ik ik-home"></i></a>
+                                                <a href="<?php echo e(URL::to('/dashboard')); ?>"><i class="ik ik-home"></i></a>
                                             </li>
                                             <li class="breadcrumb-item active">
-                                                <a href="#">Quản lý hình thức thanh toán</a>
+                                                <a href="#">Quản lý hình thức vận chuyển</a>
                                             </li>
-                                            {{-- <li class="breadcrumb-item active" aria-current="page">Bootstrap Tables</li> --}}
+                                            
                                         </ol>
                                     </nav>
                                 </div>
@@ -46,14 +46,14 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header d-block">
-                                        <h3>Danh sách phương thức thanh toán</h3>
+                                        <h3>Danh sách hình thức vận chuyển</h3>
                                         <?php
-                                        $message =Session::get('message');
-                                        if($message){
-                                          echo '<span class="text-alert">'.$message.'</span>';
-                                          Session::put('message', null);
-                                        }
-                                      ?>
+    $message =Session::get('message');
+    if($message){
+      echo '<span class="text-alert">'.$message.'</span>';
+      Session::put('message', null);
+    }
+  ?>
                                     </div>
                                     <div class="card-body p-0 table-border-style">
                                         <div class="table-responsive">
@@ -61,27 +61,30 @@
                                                 <thead>
                                                     <tr>
                                                          <th>STT</th>
-                                                        <th>Mã thanh toán</th>
-                                                        <th>Tên phương thức thanh toán</th>
+                                                        <th>Mã vận chuyển</th>
+                                                        <th>Tên vận chuyển</th>
+                                                        <th>Chi phí vận chuyển</th>
                                                         <th>Thao tác</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php {{$i=1;}} ?>
-                                                    @foreach( $list_pay as $key => $pay)
+                                                    <?php $__currentLoopData = $list_transport; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $transport): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                                     <tr>
-                                                        <th scope="row">{{$i}}</th>
-                                                        <td>{{$pay->httt_ma}}</td>
-                                                        <td>{{$pay->httt_ten}}</td>
+                                                        <th scope="row"><?php echo e($i); ?></th>
+                                                        <td><?php echo e($transport->htvc_ma); ?></td>
+                                                        <td><?php echo e($transport->htvc_ten); ?></td>
+                                                        <td><?php echo e(number_format($transport->htvc_phi).' VND'); ?></td>
                                                         <td><div class="table-actions">                                                  
-                                                            <a href="{{URL::to('/edit-pay/'.$pay->httt_ma)}}"><i class="ik ik-edit-2"></i></a>
+                                                            <a href="<?php echo e(URL::to('/edit-transport/'.$transport->htvc_ma)); ?>"><i class="ik ik-edit-2"></i></a>
                                                             <a>
-                                                            <i class="ik ik-trash-2 cancel text-red" id="{{$pay->httt_ma}}"></i></a>
+                                                            <i class="ik ik-trash-2 cancel text-red" id="<?php echo e($transport->htvc_ma); ?>"></i></a>
+
                                                         </div></td>
                                                     </tr>
                                                     <?php {{$i++;}} ?>
-                                                    @endforeach
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -90,20 +93,21 @@
                             </div>
                         </div>
                     </div>
-                <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
+                </div>
+<div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             
                             <div class="modal-header">
-                                <h5 class="modal-title" id="demoModalLabel">Xóa hình thức thanh toán</h5>
+                                <h5 class="modal-title" id="demoModalLabel">Xóa hình thức vận chuyển</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             </div>
                             <div class="modal-body">
-                            Bạn có chắc chắn muốn xóa hình thức thanh toán này?
+                            Bạn có chắc chắn muốn xóa hình thức vận chuyển này?
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
-                                <button type="button" id="ok_httt_btn" class="btn btn-success">Xác nhận</button>
+                                <button type="button" id="ok_htvc_btn" class="btn btn-success">Xác nhận</button>
                             </div>
                         </div>
                     </div>
@@ -112,28 +116,29 @@
 <script>
 $(document).ready(function(){
 
-        $('#thanhtoan').parent().addClass('active open');
-        $("#danhsachthanhtoan").addClass("active");
-            setTimeout(function(){
-            $("span.alert").remove();}, 5000 );
+        $('#vanchuyen').parent().addClass('active open');
+         $("#danhsachvanchuyen").addClass("active");
+        setTimeout(function(){
+           $("span.alert").remove();
+        }, 5000 ); // 5 secs
      });
 $(document).on('click','.cancel', function(){
-            httt_ma = $(this).attr('id');
+            htvc_ma = $(this).attr('id');
             $('#cancelModal').modal('show');
         });
-$('#ok_httt_btn').click(function(){
+$('#ok_htvc_btn').click(function(){
             $.ajax({
-                url: '<?php echo url('delete-pay');?>/'+httt_ma,
+                url: '<?php echo url('delete-transport');?>/'+htvc_ma,
                 type: 'get',
                 success: function(data)
                 {
-                    window.location.replace("<?php echo url('/manage-pay');?>");
+                    window.location.replace("<?php echo url('/manage-transport');?>");
                 }
             });
         });
 </script>
-
             
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin_layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views/admin/manage_transport.blade.php ENDPATH**/ ?>

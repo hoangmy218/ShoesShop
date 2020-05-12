@@ -9,7 +9,7 @@
                                     <div class="page-header-title">
                                         <i class="ik ik-credit-card bg-blue"></i>
                                         <div class="d-inline">
-                                            <h5>Quản lý người dùng</h5>
+                                            <h5>Vô hiệu hóa người dùng</h5>
                                             {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                                         </div>
                                     </div>
@@ -80,15 +80,14 @@
                                                           if($customer->nd_trangThai==0){
                                                             ?>
                                                             {{-- <a href ="{{URL::to('unactive-customer/'.$customer->nd_ma)}}"><span class="fa-thumb-styling fa fa-thumbs-up"></span></a> --}}
-                                                            <span class="{{-- ik ik-x-circle --}}fa-thumb-styling fa fa-thumbs-up cancel text-green"  id="{{$customer->nd_trangThai}}"><input id="tong" name="tong" value="{{$customer->nd_ma}}" type="hidden"></span>
+                                                            <span class="{{-- ik ik-x-circle --}}fa-thumb-styling fa fa-thumbs-up cancel text-green"  id="{{$customer->nd_ma}}"></span>
                                                             <?php
                                                           }else{
                                                              ?>
-                                                            <span class="{{-- ik ik-x-circle --}} fa-thumb-styling fa fa-thumbs-down cancel text-red" id="{{$customer->nd_trangThai}}"><input id="tong" name="tong" value="{{$customer->nd_ma}}" type="hidden"></span>
+                                                            <span class="{{-- ik ik-x-circle --}} fa-thumb-styling fa fa-thumbs-down cancel1 text-red" id="{{$customer->nd_ma}}"></span>
                                                             {{-- <a href="{{URL::to('active-customer/'.$customer->nd_ma)}}"><span class="fa-thumb-styling fa fa-thumbs-down"></span></a> --}}
                                                           <?php
                                                           }
-
                                                           ?>
                                                         </span></td>
                                                         
@@ -152,16 +151,15 @@ $(document).ready(function(){
         }, 5000 ); // 5 secs
 
         $(document).on('click','.cancel', function(){
-            nd_trangThai = $(this).attr('id');
-            nd_ma =$('#tong').val();
+            nd_ma = $(this).attr('id');
             console.log(nd_ma);
-            if(nd_trangThai==0){
-                $('#cancelModal').modal('show');
-            }else{
-                $('#cancelModal1').modal('show');
-            }
+            $('#cancelModal').modal('show');
             
-
+        });
+        $(document).on('click','.cancel1', function(){
+            nd_ma = $(this).attr('id');
+            console.log(nd_ma);
+            $('#cancelModal1').modal('show');
         });
 
         $('#ok_vhh_btn').click(function(){

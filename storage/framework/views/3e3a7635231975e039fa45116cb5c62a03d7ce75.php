@@ -1,5 +1,4 @@
-@extends('admin_layout')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="main-content">
                     <div class="container-fluid">
                         <div class="page-header">
@@ -9,7 +8,7 @@
                                         <i class="ik ik-credit-card bg-blue"></i>
                                         <div class="d-inline">
                                             <h5>Quản lý hình thức thanh toán</h5>
-                                            {{-- <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -17,12 +16,12 @@
                                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
-                                                <a href="{{URL::to('/dashboard')}}"><i class="ik ik-home"></i></a>
+                                                <a href="<?php echo e(URL::to('/dashboard')); ?>"><i class="ik ik-home"></i></a>
                                             </li>
                                             <li class="breadcrumb-item active">
                                                 <a href="#">Quản lý hình thức thanh toán</a>
                                             </li>
-                                            {{-- <li class="breadcrumb-item active" aria-current="page">Bootstrap Tables</li> --}}
+                                            
                                         </ol>
                                     </nav>
                                 </div>
@@ -68,20 +67,20 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php {{$i=1;}} ?>
-                                                    @foreach( $list_pay as $key => $pay)
+                                                    <?php $__currentLoopData = $list_pay; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $pay): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                                     <tr>
-                                                        <th scope="row">{{$i}}</th>
-                                                        <td>{{$pay->httt_ma}}</td>
-                                                        <td>{{$pay->httt_ten}}</td>
+                                                        <th scope="row"><?php echo e($i); ?></th>
+                                                        <td><?php echo e($pay->httt_ma); ?></td>
+                                                        <td><?php echo e($pay->httt_ten); ?></td>
                                                         <td><div class="table-actions">                                                  
-                                                            <a href="{{URL::to('/edit-pay/'.$pay->httt_ma)}}"><i class="ik ik-edit-2"></i></a>
+                                                            <a href="<?php echo e(URL::to('/edit-pay/'.$pay->httt_ma)); ?>"><i class="ik ik-edit-2"></i></a>
                                                             <a>
-                                                            <i class="ik ik-trash-2 cancel text-red" id="{{$pay->httt_ma}}"></i></a>
+                                                            <i class="ik ik-trash-2 cancel text-red" id="<?php echo e($pay->httt_ma); ?>"></i></a>
                                                         </div></td>
                                                     </tr>
                                                     <?php {{$i++;}} ?>
-                                                    @endforeach
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -136,4 +135,5 @@ $('#ok_httt_btn').click(function(){
             
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin_layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views/admin/manage_pay.blade.php ENDPATH**/ ?>

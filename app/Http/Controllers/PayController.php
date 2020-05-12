@@ -29,7 +29,7 @@ class PayController extends Controller
 
     public function manage_pay(){
     	 $this->authLogin();
-    	$list_pay = DB::table('thanhtoan')->get();
+    	$list_pay = DB::table('hinhthucthanhtoan')->get();
     	$manager_pay = view('admin.manage_pay')->with('list_pay', $list_pay);
     	return view('admin_layout')->with('admin.manage_pay', $manager_pay);
     }
@@ -38,32 +38,46 @@ class PayController extends Controller
     	 return view('admin.add_pay');
     }
     public function save_pay(Request $request){
-    	$this->authLogin();
-    	$data = array();
-        $data['tt_ten'] = $request->pay_name;
-        Db::table('thanhtoan')->insert($data);
-        Session::put('message','The pay method was added successfully.');
-        return Redirect::to('/manage-pay');
+        try{
+            $this->authLogin();
+        $data = array();
+        $data['httt_ten'] = $request->pay_name;
+        Db::table('hinhthucthanhtoan')->insert($data);
+        Session::put('success_message','Thêm hình thức thanh toán thành công!');
+        }catch (\Illuminate\Database\QueryException $e) {
+            Session::put('fail_message','Thêm hình thức thanh toán không thành công!');
+        }
+        return Redirect::to('/manage-pay'); 
+    	
+
     }
     public function edit_pay($edit_id){
         $this->authLogin();     
-        $list_pay = DB::table("thanhtoan")->where('tt_ma', $edit_id)->orderby('tt_ma','desc')->get();
+        $list_pay = DB::table("hinhthucthanhtoan")->where('httt_ma', $edit_id)->orderby('httt_ma','desc')->get();
         
         // echo $hinh_anh;
         return view('admin.edit_pay')->with('list_pay', $list_pay);
     }
     public function update_pay(Request $request, $update_id){
-    	$this->authLogin();  
+        try{
+            $this->authLogin();  
         $data= array();
-        $data['tt_ten']=$request->pay_name;
-        DB::table('thanhtoan')->where('tt_ma', $update_id)->update($data);
-        Session::put('message','The product was updated successfully.');
+        $data['httt_ten']=$request->pay_name;
+        DB::table('hinhthucthanhtoan')->where('httt_ma', $update_id)->update($data);
+        Session::put('success_message','Cập nhật hình thức thanh toánh thành công!');
+        }catch (\Illuminate\Database\QueryException $e) {
+            Session::put('fail_message','Cập nhật hình thức vthanh toán không thành công!');
+    	}
         return Redirect::to('/manage-pay');
     }
     public function delete_pay($delete_id){
-    	$this->authLogin();  
-    	DB::table('thanhtoan')->where('tt_ma', $delete_id)->delete();
-    	Session::put('message','The product was deleted successfully.');
-        return Redirect::to('/manage-pay');
+        try {
+            $this->authLogin();  
+        DB::table('hinhthucthanhtoan')->where('httt_ma', $delete_id)->delete();
+        Session::put('success_message','Xóa hình thức thanh toán thành công!');
+        }catch (\Illuminate\Database\QueryException $e) {
+            Session::put('fail_message','Xóa hình thức thanh toán không thành công!');
+        }
+        // return Redirect::to('/manage-pay');
     }
 }

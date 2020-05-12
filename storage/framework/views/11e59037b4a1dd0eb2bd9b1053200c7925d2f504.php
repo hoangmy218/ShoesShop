@@ -8,7 +8,7 @@
                                     <div class="page-header-title">
                                         <i class="ik ik-credit-card bg-blue"></i>
                                         <div class="d-inline">
-                                            <h5>Quản lý người dùng</h5>
+                                            <h5>Vô hiệu hóa người dùng</h5>
                                             
                                         </div>
                                     </div>
@@ -79,15 +79,14 @@
                                                           if($customer->nd_trangThai==0){
                                                             ?>
                                                             
-                                                            <span class="fa-thumb-styling fa fa-thumbs-up cancel text-green"  id="<?php echo e($customer->nd_trangThai); ?>"><input id="tong" name="tong" value="<?php echo e($customer->nd_ma); ?>" type="hidden"></span>
+                                                            <span class="fa-thumb-styling fa fa-thumbs-up cancel text-green"  id="<?php echo e($customer->nd_ma); ?>"></span>
                                                             <?php
                                                           }else{
                                                              ?>
-                                                            <span class=" fa-thumb-styling fa fa-thumbs-down cancel text-red" id="<?php echo e($customer->nd_trangThai); ?>"><input id="tong" name="tong" value="<?php echo e($customer->nd_ma); ?>" type="hidden"></span>
+                                                            <span class=" fa-thumb-styling fa fa-thumbs-down cancel1 text-red" id="<?php echo e($customer->nd_ma); ?>"></span>
                                                             
                                                           <?php
                                                           }
-
                                                           ?>
                                                         </span></td>
                                                         
@@ -151,16 +150,15 @@ $(document).ready(function(){
         }, 5000 ); // 5 secs
 
         $(document).on('click','.cancel', function(){
-            nd_trangThai = $(this).attr('id');
-            nd_ma =$('#tong').val();
+            nd_ma = $(this).attr('id');
             console.log(nd_ma);
-            if(nd_trangThai==0){
-                $('#cancelModal').modal('show');
-            }else{
-                $('#cancelModal1').modal('show');
-            }
+            $('#cancelModal').modal('show');
             
-
+        });
+        $(document).on('click','.cancel1', function(){
+            nd_ma = $(this).attr('id');
+            console.log(nd_ma);
+            $('#cancelModal1').modal('show');
         });
 
         $('#ok_vhh_btn').click(function(){
