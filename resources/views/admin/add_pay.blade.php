@@ -8,7 +8,7 @@
                                     <div class="page-header-title">
                                         <i class="ik ik-file-text bg-blue"></i>
                                         <div class="d-inline">
-                                            <h5>Thanh toán</h5>
+                                            <h5>Thêm hình thức thanh toán</h5>
                                            {{--  <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                                         </div>
                                     </div>
@@ -20,9 +20,9 @@
                                                 <a href="{{URL::to('/dashboard')}}"><i class="ik ik-home"></i></a>
                                             </li>
                                             <li class="breadcrumb-item">
-                                                <a href="{{URL::to('/manage-pay')}}">Quản lý Thanh toán</a>
+                                                <a href="{{URL::to('/manage-pay')}}">Quản lý hình thức thanh toán</a>
                                             </li>
-                                            <li class="breadcrumb-item active" aria-current="page">Thêm phương thức thánh toán</li>
+                                            {{-- <li class="breadcrumb-item active" aria-current="page">Thêm phương thức thánh toán</li> --}}
                                         </ol>
                                     </nav>
                                 </div>
@@ -38,7 +38,7 @@
                                                 <input type="text" class="form-control" id="exampleInputName1" name="pay_name" placeholder="Name">
                                             </div>
                                             <button type="submit" name="add_pay" class="btn btn-primary mr-2">Thêm</button>
-                                            <button class="btn btn-light">Hủy</button>
+                                            <button id="cancel" class="btn btn-light">Hủy</button>
                                         </form>
                                     </div>
                                 </div>
@@ -51,5 +51,11 @@ $(document).ready(function(){
         $('#thanhtoan').parent().addClass('active open');
          $("#themthanhtoan").addClass("active");
      });
+$('#cancel').click(function(e){
+    e.preventDefault();
+     window.location.replace("<?php echo url('/manage-pay');?>");
+            // e.preventDefault();
+            // window.history.back();
+        });
 </script>
 @endsection

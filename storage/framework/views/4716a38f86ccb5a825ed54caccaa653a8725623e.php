@@ -132,7 +132,6 @@
                                         
                                     </div>
                                 </div>
-                                <!--  Tiên 09/05 -->
                                 <div class="nav-item has-sub">
                                     <a id="mausac" href="javascript:void(0)"><i class="ik ik-speaker ik-1x"></i><span>Quản lý màu sắc</span> <span class="badge badge-danger"></span></a>
                                     <div class="submenu-content">
@@ -165,6 +164,15 @@
                                     <div class="submenu-content">
                                         <a id="themdanhmuc" href="<?php echo e(URL::to('/add-category')); ?>" class="menu-item">Thêm danh mục</a>
                                         <a id="danhsachdanhmuc" href="<?php echo e(URL::to('/manage-category')); ?>" class="menu-item">Danh sách danh mục</a>
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="nav-item has-sub">  <!-- Tiên 6/05 -->
+                                    <a href="javascript:void(0)"><i class="ik ik-list"></i><span>Quản lý bình luận</span> <span class="badge badge-danger"></span></a>
+                                    <div class="submenu-content">
+                                       
+                                        <a href="<?php echo e(URL::to('/manage-comment')); ?>" class="menu-item">Danh sách bình luận</a>
                                         
                                     </div>
                                 </div>
@@ -215,10 +223,6 @@
                                         <a id="danhsachquangcao" href="<?php echo e(URL::to('/manage-advertisement')); ?>" class="menu-item">Danh sách quảng cáo</a>
                                         
                                     </div>
-                                </div>
-                               
-                                 <div class="nav-item">
-                                    <a id="binhluan" href="<?php echo e(URL::to('/manage-comment')); ?>"><i class="ik ik-file-text"></i><span>Quản lý bình luận</span></a>
                                 </div>
                                 <!-- End Ngân (1/4/2020) -->
                                

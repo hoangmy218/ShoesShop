@@ -31,8 +31,9 @@ return array(
     'App\\Http\\Controllers\\ProductController' => $baseDir . '/app/Http/Controllers/ProductController.php',
 
     'App\\Http\\Controllers\\StatisticalController' => $baseDir . '/app/Http/Controllers/StatisticalController.php',
-
     'App\\Http\\Controllers\\StockController' => $baseDir . '/app/Http/Controllers/StockController.php',
+    'App\\Http\\Controllers\\SupplierController' => $baseDir . '/app/Http/Controllers/SupplierController.php',
+
     'App\\Http\\Controllers\\TransportController' => $baseDir . '/app/Http/Controllers/TransportController.php',
     'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',

@@ -14,6 +14,14 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+//LAN 08/05/2020 ẩn hiện các chức năng
+Route::get('/unactive-product/{controll_sp_ma}', 'ProductController@unactive_product');
+Route::get('/active-product/{controll_sp_ma}', 'ProductController@active_product');
+
+Route::get('/unactive-transport/{controll_vc_ma}', 'TransportController@unactive_transport');
+Route::get('/active-transport/{controll_vc_ma}', 'TransportController@active_transport');
+Route::get('/unactive-pay/{controll_tt_ma}', 'PayController@unactive_pay');
+Route::get('/active-pay/{controll_tt_ma}', 'PayController@active_pay');
 
 //FRONTEND hoạt động phía user
 
