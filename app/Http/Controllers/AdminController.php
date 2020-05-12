@@ -101,7 +101,7 @@ class AdminController extends Controller
             //$this->AuthLogin();
             DB::table('nguoidung')->where('nd_ma', $Controll_nd_ma)->update(['nd_trangThai'=>0]);
             Session::put('success_message', 'Bỏ vô hiệu hóa người dùng thành công');
-            return Redirect::to('manage-customer');
+            //return Redirect::to('manage-customer');
         } catch (\Illuminate\Database\QueryException $e) {
             Session::put('fail_message','Bỏ vô hiệu hóa người dùng không thành công!');
         }
