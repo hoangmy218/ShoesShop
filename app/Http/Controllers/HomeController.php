@@ -230,7 +230,8 @@ class HomeController extends Controller
     public function search(Request $request){// Tiên 08/05
 
         $keywords = $request->keywords_submit;
-        $search = DB::table('sanpham')->join('hinhanh','hinhanh.sp_ma','=','sanpham.sp_ma')->where('sp_ten','like','%'.$keywords.'%')->get(); 
+        $search = DB::table('sanpham')->join('hinhanh','hinhanh.sp_ma','=','sanpham.sp_ma')->where('sp_ten','like','%'.$keywords.'%')->limit(1)->get();
+        // Tiên thêm ->limit(1) 12/05
            
         if(!($search->isempty())){
            Session::put('success_message','Tìm kiếm sản phẩm thành công !');

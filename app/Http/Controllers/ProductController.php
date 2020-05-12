@@ -72,7 +72,7 @@ class ProductController extends Controller
     public function getSlt(Request $request)
     {
         
-        $stocks = DB::Table('cochitietsanpham')->select('soLuongTon')->where([['kc_ma','=',$request->kc_ma],['ms_ma','=',$request->ms_ma],['sp_ma','=',$request->sp_ma]])->first(); 
+        $stocks = DB::Table('cochitietsanpham')->select('soLuongTon')->where([['ms_ma','=',$request->ms_ma],['kc_ma','=',$request->kc_ma],['sp_ma','=',$request->sp_ma]])->first(); 
         return json_encode($stocks);
         /*
         $stocks = DB::Table('chitietsanpham')->select('ctsp_soLuongTon')->where([['sp_ma',$request->sp_ma],['ctsp_kichCo',$request->size_id]])->first(); 
@@ -101,7 +101,7 @@ class ProductController extends Controller
 
         $comments = Comment::where('sp_ma',$product_id)->join('nguoidung','nguoidung.nd_ma','=','binhluan.nd_ma')->where('trangThai','=',0)->get(); // Tiên 06/05
 
-        $total_view=DB::table('binhluan')->join('sanpham','sanpham.sp_ma','=','binhluan.sp_ma')->where('binhluan.sp_ma',$product_id)->select('sp_ma')->count();
+        $total_view=DB::table('binhluan')->join('sanpham','sanpham.sp_ma','=','binhluan.sp_ma')->where([['binhluan.sp_ma',$product_id],['trangThai','=',0]])->select('sp_ma')->count();//Tien thêm ['trangThai','=',0] (12/05)
 
          return view('pages.product.show_detail',compact('cochitietsanpham'))->with('details_product',$details_product)->with('sz_product',$sz_product)->with('sizes',$sizes)->with('all_product',$all_product)->with('comments',$comments)->with('total_view',$total_view)->with('image_product',$image_product)->with('sold_product',$sold_product);
     }

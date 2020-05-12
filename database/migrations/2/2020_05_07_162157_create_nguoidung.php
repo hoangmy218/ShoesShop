@@ -20,14 +20,15 @@ class CreateNguoidung extends Migration
             $table->String('nd_dienThoai',10);
             $table->String('nd_matKhau',50);
             $table->Boolean('nd_gioiTinh');
-            $table->Boolean('nd_trangThai');
             $table->Date('nd_ngaySinh');
             $table->Text('nd_diaChi');
-            $table->Integer('cv_ma')->unsigned();
-            $table->foreign('cv_ma')->references('cv_ma')->on('chucvu');
-            $table->timestamps(); //tự động thêm thời gian tạo
+            $table->Boolean('nd_trangThai');
+
+            $table->Integer('ltk_ma')->unsigned();
+            $table->foreign('ltk_ma')->references('ltk_ma')->on('loaitaikhoan');
+
+            $table->timestamps();
         });
-        
     }
 
     /**

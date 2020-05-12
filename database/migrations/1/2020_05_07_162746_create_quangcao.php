@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePhieunhap extends Migration
+class CreateQuangcao extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreatePhieunhap extends Migration
      */
     public function up()
     {
-        Schema::create('phieunhap', function (Blueprint $table) {
-            $table->Increments('pn_ma'); //Increments là khóa chính
-            $table->Date('pn_ngayNhap');
+        Schema::create('quangcao', function (Blueprint $table) {
+            $table->Increments('qc_ma');
+            $table->String('qc_chuDe');
+            $table->String('qc_hinhAnh');
+            $table->Boolean('qc_trangThai');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreatePhieunhap extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('phieunhap');
+        Schema::dropIfExists('quangcao');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHinhthucthanhtoan extends Migration
+class CreateTrangthai extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateHinhthucthanhtoan extends Migration
      */
     public function up()
     {
-        Schema::create('hinhthucthanhtoan', function (Blueprint $table) {
-             $table->Increments('httt_ma');
-            $table->String('httt_ten');
-            $table->timestamps();
+        Schema::create('trangthai', function (Blueprint $table) {
+            $table->Increments('tt_ma'); //Increments là khóa chính
+            $table->String('tt_ten');
+            $table->timestamps(); //tự động thêm thời gian tạo
         });
     }
 
@@ -27,6 +27,6 @@ class CreateHinhthucthanhtoan extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hinhthucthanhtoan');
+        Schema::dropIfExists('trangthai');
     }
 }

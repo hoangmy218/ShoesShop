@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVanchuyen extends Migration
+class CreateKichco extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateVanchuyen extends Migration
      */
     public function up()
     {
-        Schema::create('vanchuyen', function (Blueprint $table) {
-            $table->Increments('vc_ma');
-            $table->String('vc_ten');
-            $table->Integer('vc_phi')->unsigned();
-            $table->timestamps();
+        Schema::create('kichco', function (Blueprint $table) {
+            $table->Increments('kc_ma'); //Increments là khóa chính
+            $table->String('kc_ten');
+            $table->timestamps(); //tự động thêm thời gian tạo
         });
     }
 
@@ -28,6 +27,6 @@ class CreateVanchuyen extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vanchuyen');
+        Schema::dropIfExists('kichco');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHinhanh extends Migration
+class CreateCochitietsanpham extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateHinhanh extends Migration
      */
     public function up()
     {
-        Schema::create('hinhanh', function (Blueprint $table) {
-           $table->Increments('ha_ma'); //Increments là khóa chính
-            $table->String('ha_ten');
+        Schema::create('cochitietsanpham', function (Blueprint $table) {
             $table->Integer('sp_ma')->unsigned();
             $table->foreign('sp_ma')->references('sp_ma')->on('sanpham');
-            $table->timestamps(); //tự động thêm thời gian tạo
-        
+            $table->Integer('ms_ma')->unsigned();
+            $table->foreign('ms_ma')->references('ms_ma')->on('mausac');
+            $table->Integer('kc_ma')->unsigned();
+            $table->foreign('kc_ma')->references('kc_ma')->on('kichco');
+            $table->Integer('soLuongTon');
+            $table->timestamps();
         });
     }
 
@@ -30,6 +32,6 @@ class CreateHinhanh extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hinhanh');
+        Schema::dropIfExists('cochitietsanpham');
     }
 }

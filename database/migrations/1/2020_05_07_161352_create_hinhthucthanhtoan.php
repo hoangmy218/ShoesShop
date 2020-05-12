@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddKmMaToDonhangTable extends Migration
+class CreateHinhthucthanhtoan extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class AddKmMaToDonhangTable extends Migration
      */
     public function up()
     {
-        Schema::table('donhang', function (Blueprint $table) {
-            $table->Integer('km_ma')->unsigned()->nullable();
-            $table->foreign('km_ma')->references('km_ma')->on('khuyenmai');
+        Schema::create('hinhthucthanhtoan', function (Blueprint $table) {
+            $table->Increments('httt_ma');
+            $table->String('httt_ten');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +27,6 @@ class AddKmMaToDonhangTable extends Migration
      */
     public function down()
     {
-        Schema::table('donhang', function (Blueprint $table) {
-            $table->dropColumn('km_ma');
-        });
+        Schema::dropIfExists('hinhthucthanhtoan');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCochitietphieunhap extends Migration
+class CreateBinhluan extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,19 @@ class CreateCochitietphieunhap extends Migration
      */
     public function up()
     {
-        Schema::create('cochitietphieunhap', function (Blueprint $table) {
-           
-            
-            $table->Integer('pn_ma')->unsigned();
-            $table->foreign('pn_ma')->references('pn_ma')->on('phieunhap');
+        Schema::create('binhluan', function (Blueprint $table) {
             $table->Integer('sp_ma')->unsigned();
             $table->foreign('sp_ma')->references('sp_ma')->on('sanpham');
+
+            $table->Integer('nd_ma')->unsigned();
+            $table->foreign('nd_ma')->references('nd_ma')->on('nguoidung');
             
-            $table->Integer('SoLuongNhap');
-            $table->String('DonGiaNhap');
+
+            $table->Text('noiDung');
+            $table->Boolean('trangThai');
+            $table->Date('ngayBinhLuan');
            
-            $table->timestamps(); //tự động thêm thời gian tạo
+            $table->timestamps();
         });
     }
 
@@ -35,6 +36,6 @@ class CreateCochitietphieunhap extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cochitietphieunhap');
+        Schema::dropIfExists('binhluan');
     }
 }

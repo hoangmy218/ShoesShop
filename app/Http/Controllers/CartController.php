@@ -91,13 +91,13 @@ class CartController extends Controller
         $data['options']['size'] = $ctsp->kc_ma;
   
         // return view("pages.cart.show_cart");
-		Cart::add($data);
-        // echo "<pre>";
-        // print_r($data);
-        // echo "</pre>";
+		// Cart::add($data);
+        echo "<pre>";
+        print_r($data);
+        echo "</pre>";
 
         // Cart::destroy();
-   		return Redirect::to('/show-cart');
+   		// return Redirect::to('/show-cart');
     }// Tien 
     
     public function delete_to_cart($rowId){

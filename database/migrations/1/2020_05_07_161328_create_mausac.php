@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuangcaoTable extends Migration
+class CreateMausac extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateQuangcaoTable extends Migration
      */
     public function up()
     {
-        Schema::create('quangcao', function (Blueprint $table) {
-            $table->Increments('qc_ma');
-            $table->String('qc_chuDe');
-		$table->String('qc_hinhAnh');
-            $table->timestamps();
+        Schema::create('mausac', function (Blueprint $table) {
+            $table->Increments('ms_ma'); //Increments là khóa chính
+            $table->String('ms_ten');
+            $table->timestamps(); //tự động thêm thời gian tạo
         });
     }
 
@@ -28,6 +27,6 @@ class CreateQuangcaoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quangcao');
+        Schema::dropIfExists('mausac');
     }
 }
