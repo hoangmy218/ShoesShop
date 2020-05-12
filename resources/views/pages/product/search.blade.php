@@ -19,8 +19,11 @@
         <div class="container">
             <div class="row justify-content-center mb-3 pb-3">
               <div class="col-md-12 heading-section text-center ftco-animate">
+
+                  <!--  Tien 07/05 -->
                 <h2 class="mb-4">{{ __('Kết Quả Tìm Kiếm') }}</h2>
               </div>
+                <!--  Tien 07/05 -->
                         <?php
                             $message = Session::get('fail_message');
                             if ($message){

@@ -68,12 +68,14 @@ class ProductController extends Controller
     	$manager_product = view('admin.manage_product')->with('list_pro', $list_products);
     	return view('admin_layout')->with('admin.manage_product', $manager_product);
     }
- 
+
     //Tien thêm getSlt xóa hàm getSlt bên SocksController 07/05
     public function getSlt(Request $request)
     {
         
-        $stocks = DB::Table('chitietsanpham')->select('ctsp_soLuongTon')->where('ctsp_ma',$request->ctsp_ma)->first(); 
+
+        $stocks = DB::Table('cochitietsanpham')->select('soLuongTon')->where([['kc_ma','=',$request->kc_ma],['ms_ma','=',$request->ms_ma],['sp_ma','=',$request->sp_ma]])->first(); 
+
         return json_encode($stocks);
         /*
         $stocks = DB::Table('chitietsanpham')->select('ctsp_soLuongTon')->where([['sp_ma',$request->sp_ma],['ctsp_kichCo',$request->size_id]])->first(); 
@@ -98,13 +100,17 @@ class ProductController extends Controller
    
         $sizes = DB::Table('cochitietsanpham')->select('kc_ma','soLuongTon')->where('cochitietsanpham.sp_ma',$product_id)->get(); // Tiên 12/03
         
-        // $sold_product=DB::table('chitietdonhang')->join('chitietsanpham','chitietsanpham.ctsp_ma','=','chitietdonhang.ctsp_ma')->where('chitietsanpham.sp_ma',$product_id)->select('soLuongDat')->sum('soLuongDat'); //Tien 18/03 ->with('sold_product',$sold_product)
+
+        $sold_product=DB::table('cochitietdonhang')->join('sanpham','sanpham.sp_ma','=','cochitietdonhang.sp_ma')->where('cochitietdonhang.sp_ma',$product_id)->select('soLuongDat')->sum('soLuongDat'); //Tien 11/05  
+
 
         $comments = Comment::where('sp_ma',$product_id)->join('nguoidung','nguoidung.nd_ma','=','binhluan.nd_ma')->where('trangThai','=',0)->get(); // Tiên 06/05
 
         $total_view=DB::table('binhluan')->join('sanpham','sanpham.sp_ma','=','binhluan.sp_ma')->where('binhluan.sp_ma',$product_id)->select('sp_ma')->count();
 
-         return view('pages.product.show_detail',compact('cochitietsanpham'))->with('details_product',$details_product)->with('sz_product',$sz_product)->with('sizes',$sizes)->with('all_product',$all_product)->with('comments',$comments)->with('total_view',$total_view)->with('image_product',$image_product);
+
+         return view('pages.product.show_detail',compact('cochitietsanpham'))->with('details_product',$details_product)->with('sz_product',$sz_product)->with('sizes',$sizes)->with('all_product',$all_product)->with('comments',$comments)->with('total_view',$total_view)->with('image_product',$image_product)->with('sold_product',$sold_product);
+
     }
 
 

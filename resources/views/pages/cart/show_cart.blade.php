@@ -51,6 +51,7 @@
 							        <th>{{ __('Mã sản phẩm') }}</th>
 							        <th>{{ __('Hình ảnh') }}</th>
 							        <th>{{ __('Tên sản phẩm') }}</th>
+							        <th>{{ __('Màu sắc') }}</th>
 							        <th>{{ __('Kích cỡ') }}</th>
 							        <th>{{ __('Đơn giá') }}</th>
 							        <th>{{ __('Số lượng') }}</th>
@@ -75,6 +76,7 @@
 								        	<h3>{{$v_content->name}}</h3>
 								        	
 								        </td>
+								     <!--  Them mau sac -->
 								        <td class="quantity">
 								        	
 								        	<select name="size" id="size"  class="form-control size<?php echo $count; ?>">

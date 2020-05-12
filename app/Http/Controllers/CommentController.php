@@ -30,19 +30,27 @@ class CommentController extends Controller
     public function postComment(Request $request, $id){
 
         // $this->authLogin();
-        $data = new Comment; // cách 1 insert vào model Comment
-    
-        $data->noiDung = $request->content;
-        $data->trangThai = 0;
-        $data->sp_ma = $id;
-        $data->nd_ma = Session::get('nd_ma');
-        $data->ngayBinhLuan=Carbon::now()->toDateString();
-        $data->save();
-    
-        Session::put('success_message','Viết bình luận thành công !');
-        return back(); 
-        // return back(); 
 
+        try {
+    
+            $data = new Comment; // cách 1 insert vào model Comment
+        
+            $data->noiDung = $request->content;
+            $data->trangThai = 0;
+            $data->sp_ma = $id;
+            $data->nd_ma = Session::get('nd_ma');
+            $data->ngayBinhLuan=Carbon::now()->toDateString();
+            $data->save();
+
+
+            Session::put('success_message','Viết bình luận thành công !');
+           
+            
+        } catch (\Illuminate\Database\QueryException $e) {
+            Session::put('fail_message','Bạn vừa viết bình luận của sản phẩm này xong !');
+        }
+        return back(); 
+       
         //$data= array(); // cách 2 insert vo bảng
         // $data['bl_email'] = $request->email;
         // $data['bl_ten'] = $request->name;
@@ -69,7 +77,9 @@ class CommentController extends Controller
         } catch (\Illuminate\Database\QueryException $e) {
             Session::put('fail_message1','Hiển thị bình luận không thành công !');
         }
-            return Redirect::to('manage-comment');
+
+        return Redirect::to('manage-comment');
+
     }
     // Tiên 08/05
     public function unactive_comment($nd_ma, $sp_ma,$ngayBinhLuan){

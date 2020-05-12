@@ -15,7 +15,9 @@ class HomeController extends Controller
     
     // Ngân (11/3/2020) paste lại nguyên cái public authLogin
     public function authLogin(){
+
          $ltk=Session::get('ltk_ma');
+
         if ($ltk==2) 
             return Redirect::to('/Home_u'); 
         else 
@@ -116,7 +118,7 @@ class HomeController extends Controller
             $data['nd_email'] = $req->user_email;
             $data['nd_dienThoai'] = $req->user_phone;
             $data['nd_diaChi'] = $req->user_address;
-            $data['cv_ma'] = "2"; //Chuc vu Khach hang
+            $data['ltk_ma'] = "2"; //Chuc vu Khach hang
             $data['nd_trangThai'] = "0"; //Trạng thái tài khoản (không vô hiệu) Ngân(6/3/2020)
             if($req->rdGioitinh=="Male"){
                 $data['nd_gioiTinh'] = 0;
@@ -164,13 +166,13 @@ class HomeController extends Controller
             echo '</pre>';*/
             /*return view('admin.dashboard');*/
             if ($result) {
-                Session::put('cv_ma',$result->cv_ma);
-                $cv=Session::get('cv_ma');
+                Session::put('ltk_ma',$result->ltk_ma);
+                $ltk=Session::get('ltk_ma');
                 if($result->nd_trangThai==1){
                     Session::put('message','Tài khoản đã bị vô hiệu hóa!');
                     return Redirect::to('/userLogin');
                 }
-                if($cv==2){
+                if($ltk==2){
                     Session::put('nd_ma', $result->nd_ma); // result trỏ tới trường csdl
                     Session::put('nd_ten',$result->nd_ten);
                     Session::put('nd_email',$result->nd_email);
@@ -195,7 +197,7 @@ class HomeController extends Controller
         $this->authLogin();
         Session::put('nd_ma',null);
         Session::put('nd_ten',null);
-        Session::put('cv_ma',null);
+        Session::put('ltk_ma',null);
         Session::put('nd_email',null);
         Cart::destroy();
         return Redirect::to('/');

@@ -98,9 +98,11 @@
 								
 								<a href="#" class="mr-2" style="color: #000;">
 									
-									<!-- tiên 18/04 -->
+
+									{{$sold_product}}<!-- tiên 11/05 -->
+
 									
-								 	<span style="color: #bbb;">{{ __('Đã bán') }}</span>
+								 	<span style="color: #bbb;">  {{ __('Đã bán') }}</span>
 								</a>
 								
 							</p>
@@ -184,7 +186,7 @@
 						                 	//  echo '<pre>';
 						                 	// print_r($array); 	
 						                 	// echo '</pre>';
-						                 
+
 
 						                 	/*echo '<pre>';
 						                 	print_r($array);echo '</pre>';
@@ -231,10 +233,11 @@
 					            	
 						            <input type="text" id="quantity" name="quantity" class="quantity form-control input-number" value="1" min="1" max="5">
 					  
-					             	<!-- {{-- @foreach($sz_product as $key => $slt)
+
+					             	{{-- @foreach($sz_product as $key => $slt)
 					                  	<option value="{{$slt->ctsp_ma}}" name="opsize">{{$slt->soLuongTon}}</option>
-					                @endforeach --}} -->
-					                
+					                @endforeach --}}
+				                
 					             	<span class="input-group-btn ml-2">
 					                	<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
 					                     <i class="ion-ios-add"></i>
@@ -254,12 +257,9 @@
 					        </div>
 				        	</div>
 
-				        	
 				          	<!-- <p><a href="cart.html" class="btn btn-primary py-3 px-5">{{ __('Mua ngay') }}</a></p> -->
 
-						</div>
-				
-				    			
+						</div>	
     			</div>
     			<div class="row">
     				<div class="col-lg-6 ">
@@ -275,7 +275,6 @@
     					
     		</form>
 
-
 <!-- Tien 13/3 -->
     		<!-- <form action="{{URL::to('/reviews')}}" method="POST">
 				{{ csrf_field() }}
@@ -286,8 +285,6 @@
     				</div>
 			</form> -->
 		@endforeach
-
-
 
     		<div class="row mt-5">
           <div class="col-md-12 nav-link-wrap">
@@ -342,9 +339,9 @@
 						                        <br>
 						                        <br>
 						   		 	<h3 class="mb-4">{{$total_view}} {{ __('nhận xét:') }}</h3>
-						   		 	@foreach($comments as $key => $comment)
 						   		 	
-						   						   			
+						   		 	@foreach($comments as $key => $comment)
+						   					   			
 						   			<div class="review">
 								   		<div class="user-img" style="background-image: url({{URL::to('public/frontend/images/avatar.jpg')}})"></div>
 								   		<div class="desc">
@@ -438,9 +435,6 @@
                                     @if ($mand)
                                     	@foreach($all_product as $key => $product)
 											<div class="col-md-6">
-												
-
-
 								    				<div class="well" >
 								    					<h3>{{ __('Viết nhận xét của bạn') }}</h3>
 								 						
@@ -464,13 +458,6 @@
 								    		</div>
 								    	@endforeach
 								    @endif
-
-                                    
-                                        
-                                
-                                    
-								
-					    		
 						   	</div>
               </div>
             </div>
@@ -481,15 +468,22 @@
    <script src="http://www.codermen.com/js/jquery.js"></script>
 
         <script type="text/javascript">
-    	
+    	 // Tien 08/05
+         //dat thi gian tat thong bao
+        setTimeout(function(){
+           $("span.alert").remove();
+        }, 5000 ); // 5 secs
+
+        
         $(document).ready(function(){
         	var slt = 1;
 
-            $('select[name="size"]').on('change',function(){
-                var ctsp_ma = $(this).val(); // size_id => ctsp_ma
-                console.log(ctsp_ma,'ctsp_ma'); 
-                
-                if(ctsp_ma){
+
+        	$('select[name="mausac"]').on('change',function(){
+                var ms_ma = $(this).val(); // mausac_id => ms_ma
+                console.log(ms_ma,'ms_ma'); 
+
+                if(ms_ma){
 
                     $.ajax({
 
@@ -497,33 +491,57 @@
                         dataType: 'json',
                         type: 'GET',
                         data:{
-                        	ctsp_ma: ctsp_ma
+                        	ms_ma: ms_ma
                         },
                         success: function(data){
                             console.log(data);
                             
                              $.each(data, function(name,stock){
                                 $('input[name="quantity"]').attr({
-								       "max" : stock,        // substitute your own
-								       "min" : 1          // values (or variables) here
+								       "max" : stock,   // substitute your own
+								       "min" : 1       // values (or variables) here
 								    });
                               console.log(stock, 'stock');
                               $('input[name="quantity"]').val("1");
                               slt = stock;
-
-                             
-                             
-                        
                     		});
                         }
                     });
                 }
             });
 
-             $('select[name="mausac"]').on('change',function(){
-                var ms_ma = $(this).val(); // size_id => ctsp_ma
-                console.log(ms_ma,'ms_ma'); 
+
+            $('select[name="size"]').on('change',function(){
+                var kc_ma = $(this).val(); // size_id => kc_ma
+                console.log(kc_ma,'kc_ma'); 
+                
+                if(kc_ma){
+
+                    $.ajax({
+
+                        url: "{{url('getSlt')}}",
+                        dataType: 'json',
+                        type: 'GET',
+                        data:{
+                        	kc_ma: kc_ma
+                        },
+                        success: function(data){
+                            console.log(data);
+                            
+                             $.each(data, function(name,stock){
+                                $('input[name="quantity"]').attr({
+								       "max" : stock,   // substitute your own
+								       "min" : 1       // values (or variables) here
+								    });
+                              console.log(stock, 'stock');
+                              $('input[name="quantity"]').val("1");
+                              slt = stock;
+                    		});
+                        }
+                    });
+                }
             });
+
 
 
             var quantitiy=0;
@@ -555,7 +573,7 @@
 		      
 		            // Increment
 		            if(quantity>1){
-		            $('#quantity').val(quantity - 1);
+		            	$('#quantity').val(quantity - 1);
 		            }
 		    });
         });

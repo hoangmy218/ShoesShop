@@ -11,7 +11,7 @@ session_start();
 
 class CouponController extends Controller
 {
-     public function authLogin(){
+    public function authLogin(){
         $admin_id = Session::get('nd_ma');
         if ($admin_id) 
             return Redirect::to('/dashboard'); 

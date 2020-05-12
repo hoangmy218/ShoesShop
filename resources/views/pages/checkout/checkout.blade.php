@@ -218,7 +218,7 @@
                                    console.log(typeof tongtien, ' type tongtien');
                                    console.log(typeof value,' type value')
                                     $('a[name="price"]').replaceWith('<a id="price" name="price">'+value+' VND</a>');
-                                     // $('input[name="tong"]').replaceWith('<input id="tong" name="tong" value="'+tongn+'" type="hidden" placeholder=""');
+                                     $('input[name="tong"]').replaceWith('<input id="tong" name="tong" value="'+tongn+'" type="hidden" placeholder=""');
                                     $('div[id="tongtext"]').text(tongn+' VND');
                                  });
                             }

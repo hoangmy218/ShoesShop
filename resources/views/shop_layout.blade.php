@@ -88,7 +88,7 @@
 
             <?php 
               $customer_name = Session::get('nd_ten');
-              $customer_cv = Session::get('cv_ma'); 
+              $customer_cv = Session::get('ltk_ma'); 
             ?>
             @if ($customer_cv == 2)
              <li class="nav-item dropdown">

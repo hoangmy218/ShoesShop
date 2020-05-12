@@ -50,7 +50,10 @@
                             </div>
                     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<<<<<<< HEAD
     <script src="http://www.codermen.com/js/jquery.js"></script>
+=======
+>>>>>>> origin/customer
 <script>
 $(document).ready(function(){
 

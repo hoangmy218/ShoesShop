@@ -78,12 +78,13 @@ class BrandController extends Controller
         return Redirect::to('/manage-brand');
     }
 
-     public function delete_brand_product($brand_product_id){
+    public function delete_brand_product($brand_product_id){
         $this->AuthLogin();
          // Tien 07/05
         try {
-    
-           DB::table('thuonghieu')->where('th_ma',$brand_product_id)->delete();
+
+            DB::table('thuonghieu')->where('th_ma',$brand_product_id)->delete();
+
             Session::put('success_message1','Xóa thương hiệu thành công !');
             
         } catch (\Illuminate\Database\QueryException $e) {

@@ -42,6 +42,40 @@ Route::get('switchlang/{locale}', function ($locale) {
 
 
 });
+//Comment   Tien 21/03
+Route::post('comment/{id}','CommentController@postComment');//Tiên 13/03
+
+Route::get('/manage-comment','CommentController@showComment'); 
+Route::get('/unactive-comment/{nd_ma}/{sp_ma}/{ngayBinhLuan}', 'CommentController@unactive_comment');// Tiên 08/05
+Route::get('/active-comment/{nd_ma}/{sp_ma}/{ngayBinhLuan}', 'CommentController@active_comment');// Tiên 08/05
+
+
+//Tien 09/05 MauSac
+Route::get('/add-color','ColorController@addColor');
+
+Route::post('/save-color','ColorController@saveColor');
+
+Route::get('/manage-color','ColorController@showColor');
+
+Route::get('/edit-color/{ms_ma}','ColorController@edit_Color');
+
+Route::post('/update-color/{ms_ma}','ColorController@update_Color');
+
+Route::get('/delete-color/{ms_ma}','ColorController@delete_Color');
+
+//Tien 09/05  KichCo
+Route::get('/add-size','SizeController@addSize');
+
+Route::post('/save-size','SizeController@saveSize');
+
+Route::get('/manage-size','SizeController@showSize');
+
+Route::get('/edit-size/{kc_ma}','SizeController@edit_Size');
+
+Route::post('/update-size/{kc_ma}','SizeController@update_Size');
+
+Route::get('/delete-size/{kc_ma}','SizeController@delete_Size');
+
 
 //Comment   Tien 21/03
 Route::post('comment/{id}','CommentController@postComment');//Tiên 13/03
@@ -89,6 +123,8 @@ Route::post('capnhat-thongtin/{capnhat_nd_ma}','HomeController@capnhat_thongtin'
 //Product
 Route::get('/product-detail/{product_id}','ProductController@details_product');//Tiên
 
+Route::post('comment/{id}','CommentController@postComment');//Tiên 13/03
+Route::get('/getSlt','ProductController@getSlt');//Tiên 07/05
 
 
 Route::get('/all-product','ProductController@all_product');//Tiên
@@ -99,7 +135,7 @@ Route::post('/tim-kiem','HomeController@search');// Tiên 15/03
 Route::get('/index','StockController@index');
 /*Route::get('/getStock/{id}','StockController@getStock');*/
 Route::get('/getStock','StockController@getStock');
-Route::get('/getSlt','StockController@getSlt');
+
 Route::post('/getAmount','StockController@getAmount');
 
 
@@ -181,6 +217,8 @@ Route::get('/manage-brand','BrandController@showBrand');
 Route::get('/add-brand','BrandController@addBrand');
 Route::post('/save-brand','BrandController@saveBrand');
 
+
+
 	//Tien
 Route::get('/edit-brand-product/{brand_product_id}','BrandController@edit_brand_product');
 Route::get('/delete-brand-product/{brand_product_id}','BrandController@delete_brand_product');
@@ -208,15 +246,6 @@ Route::post('/save-product','ProductController@saveProduct');
 //Lan
 Route::get('/chinhsua-sanpham/{chinhsua_sp_ma}','ProductController@chinhsua_sanpham');
 Route::post('/capnhat-sanpham/{chinhsua_sp_ma}','ProductController@capnhat_sanpham');
-
-//MY - SUPPLIER
-Route::get('/add-supplier', 'SupplierController@addSupplier');
-Route::post('/save-supplier','SupplierController@saveSupplier');
-Route::get('/manage-suppliers','SupplierController@showSuppliers');
-Route::get('/delete-supplier/{ncc_ma}','SupplierController@deleteSupplier');
-Route::get('/edit-supplier/{ncc_ma}','SupplierController@editSupplier');
-Route::post('/update-supplier/{ncc_ma}','SupplierController@updateSupplier');
-
 
 //Goods-Receipt My
 Route::get('/add-goods-receipt','ProductController@addGoodsReceipt');

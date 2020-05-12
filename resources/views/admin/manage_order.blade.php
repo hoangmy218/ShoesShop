@@ -290,7 +290,7 @@
 
         //huy
 
-        
+        //hoan tat
         $(document).on('click','.cancel', function(){
             dh_ma = $(this).attr('id');
             $('#cancelModal').modal('show');
