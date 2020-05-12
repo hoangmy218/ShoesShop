@@ -18,6 +18,8 @@ class CreateHinhanh extends Migration
             $table->String('ha_ten');
             $table->Integer('sp_ma')->unsigned();
             $table->foreign('sp_ma')->references('sp_ma')->on('sanpham');
+            
+            
             $table->timestamps(); //tự động thêm thời gian tạo
         });
     }
