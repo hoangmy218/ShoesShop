@@ -24,7 +24,7 @@
                                                 <a href="{{URL::to('/dashboard')}}"><i class="ik ik-home"></i></a>
                                             </li>
                                             <li class="breadcrumb-item active">
-                                                <a href="#">Quản lý bình luận</a>
+                                                <a href="{{URL::to('/manage-comment')}}">Quản lý bình luận</a>
                                             </li>
                                             {{-- <li class="breadcrumb-item active" aria-current="page">Bootstrap Tables</li> --}}
                                         </ol>
@@ -32,17 +32,26 @@
                                 </div>
                             </div>
                         </div>
-
+                        
+                       
                         <div class="row">
                             <div class="col-md-12">
 								<div class="card">
                                     <div class="card-header d-block">
                                         <h3>Danh sách bình luận</h3>
+                                        <br>
                                         <?php
-                                            $message =Session::get('message');
-                                            if($message){
-                                              echo '<span class="text-alert">'.$message.'</span>';
-                                              Session::put('message', null);
+                                            $message1 = Session::get('fail_message1');
+                                            if ($message1){
+                                                echo '<span class="alert alert-danger">'.$message1."</span>";
+                                                
+                                                Session::put('fail_message1',null);
+                                            }
+                                            $message1 = Session::get('success_message1');
+                                            if ($message1){
+                                                echo '<span class="alert alert-success">'.$message1."</span>";
+                                                
+                                                Session::put('success_message1',null);
                                             }
                                         ?>
                                     </div>
@@ -54,9 +63,11 @@
                                                          <th>STT</th>
                                                         <!-- <th>Mã bình luận</th> -->
                                                         <th>Mã sản phẩm</th>
-                                                        <th>Tên</th>
-                                                        <th>Email</th>
+                                                        <th>Mã người dùng</th>
+                                                        <!-- <th>Tên</th>
+                                                        <th>Email</th> -->
                                                         <th>Nội dung bình luận</th>
+                                                        <th>Ngày bình luận</th>
                                                         <th>Thao tác</th>
                                                     </tr>
                                                 </thead>
@@ -66,22 +77,23 @@
 
                                                     <tr>
                                                         <th scope="row">{{$i}}</th>
-                                                        <!-- <td>{{$ds_binhluan->bl_id}}</td> -->
+                                                        
                                                         <td>{{$ds_binhluan->sp_ma}}</td>
-                                                        <td>{{$ds_binhluan->bl_ten}}</td>
-                                                        <td>{{$ds_binhluan->bl_email}}</td>
-                                                        <td>{{$ds_binhluan->bl_noidung}}</td>
+                                                        <td>{{$ds_binhluan->nd_ma}}</td>
+                                                        
+                                                        <td>{{$ds_binhluan->noiDung}}</td>
+                                                        <td>{{$ds_binhluan->ngayBinhLuan}}</td>
                                                         <td>
                                                             
                                                             <span class="text-ellipsis">
                                                               <?php
-                                                              if($ds_binhluan->bl_trangthai==0){
+                                                              if($ds_binhluan->trangThai==0){
                                                                 ?>
-                                                                <a href ="{{URL::to('unactive-comment/'.$ds_binhluan->bl_id)}}"><span class="text-green ik ik-eye"></span></a>
+                                                                <a href ="{{URL::to('unactive-comment/'.$ds_binhluan->nd_ma.'/'.$ds_binhluan->sp_ma.'/'.$ds_binhluan->ngayBinhLuan)}}"><span class="text-green ik ik-eye"></span></a>
                                                                 <?php
                                                               }else{
                                                                 ?>
-                                                                <a href="{{URL::to('active-comment/'.$ds_binhluan->bl_id)}}"><span class=" text-red ik ik-eye-off"></span></a>
+                                                                <a href="{{URL::to('active-comment/'.$ds_binhluan->nd_ma.'/'.$ds_binhluan->sp_ma.'/'.$ds_binhluan->ngayBinhLuan)}}"><span class=" text-red ik ik-eye-off"></span></a>
                                                               <?php
                                                               }
 
@@ -101,8 +113,20 @@
                     </div>
                 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-            
+<script src="http://www.codermen.com/js/jquery.js"></script>
+<script>
+$(document).ready(function(){
 
+         // Tien 08/05
+         //dat thi gian tat thong bao
+        setTimeout(function(){
+           $("span.alert").remove();
+        }, 5000 ); // 5 secs
 
+         
+
+});
+</script>
 @endsection

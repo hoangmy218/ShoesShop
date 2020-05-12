@@ -27,7 +27,7 @@
                                                 <a href="{{URL::to('/history-customer')}}">Quản lý lịch sử</a>
                                                 
                                             </li>
-                                            <li class="breadcrumb-item active" aria-current="page">Lịch sử đơn</li>
+                                            <li class="breadcrumb-item active" aria-current="page">Lịch sử mua hàng</li>
                                         </ol>
                                     </nav>
                                 </div>

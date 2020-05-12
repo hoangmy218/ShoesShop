@@ -79,7 +79,7 @@
                                                 </tbody>
                                             </table>
                                              <button type="submit" name="add_cate" class="btn btn-primary mr-2">Thêm</button>
-                                            <button id="cancel" class="btn btn-light">Hủy</button>
+                                            <button class="btn btn-light">Hủy</button>
                                         </form>
                                         </div>
                                     </div>

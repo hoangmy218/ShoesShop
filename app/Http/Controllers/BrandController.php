@@ -30,8 +30,16 @@ class BrandController extends Controller
         $data = array();
         $data['th_ma'] = $request->brand_ma;
         $data['th_ten'] = $request->brand_name;
-        Db::table('thuonghieu')->insert($data);
-        Session::put('message','The brand was added successfully.');
+        // Tien 07/05
+        try {
+    
+            DB::table('thuonghieu')->insert($data);
+            Session::put('success_message1','Thêm thương hiệu thành công !');
+            
+        } catch (\Illuminate\Database\QueryException $e) {
+            Session::put('fail_message1','Thêm thương hiệu không thành công !');
+        }
+       
         return Redirect::to('/manage-brand');
     }
 
@@ -55,19 +63,34 @@ class BrandController extends Controller
     public function update_brand_product(Request $request,$brand_product_id){
         $this->AuthLogin();
         $data = array();
-         // Tien (04/05/2020) sửa 2 dòng phía dưới
-        $data['th_ma'] = $request->brand_ma;
+         // Tien (07/05/2020) sửa 
+        // $data['th_ma'] = $request->brand_ma;
         $data['th_ten'] = $request->brand_name;
-        
-        DB::table('thuonghieu')->where('th_ma',$brand_product_id)->update($data);
-        Session::put('message','The brand was updated successfully.');
+         // Tien 07/05
+        try {
+    
+            DB::table('thuonghieu')->where('th_ma',$brand_product_id)->update($data);
+            Session::put('success_message1','Cập nhật thương hiệu thành công !');
+            
+        } catch (\Illuminate\Database\QueryException $e) {
+            Session::put('fail_message1','Cập nhật thương hiệu không thành công !');
+        }
         return Redirect::to('/manage-brand');
     }
 
-     public function delete_brand_product($brand_product_id){
+    public function delete_brand_product($brand_product_id){
         $this->AuthLogin();
-        DB::table('thuonghieu')->where('th_ma',$brand_product_id)->delete();
-        Session::put('message','The brand was deleted successfully.');
-        return Redirect::to('/manage-brand');
+         // Tien 07/05
+        try {
+
+            DB::table('thuonghieu')->where('th_ma',$brand_product_id)->delete();
+
+            Session::put('success_message1','Xóa thương hiệu thành công !');
+            
+        } catch (\Illuminate\Database\QueryException $e) {
+            Session::put('fail_message1','Thương hiệu sản phẩm đang bán, không thể xóa!');
+        }
+       
+        // return Redirect::to('/manage-brand');
     }
 }

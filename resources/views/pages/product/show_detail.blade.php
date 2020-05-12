@@ -89,15 +89,20 @@
 								<a href="#"><span class="ion-ios-star-outline"></span></a>
 							</p> --}}
 							<p class="text-left mr-4">
-								<a href="#" class="mr-2" style="color: #000;">{{$total_view}} <span style="color: #bbb;">{{ __('Đánh giá') }}</span></a>
+								<a href="#" class="mr-2" style="color: #000;">
+									{{$total_view}}
+									<span style="color: #bbb;">{{ __('Đánh giá') }}</span>
+								</a>
 							</p>
 							<p class="text-left">
 								
 								<a href="#" class="mr-2" style="color: #000;">
 									
-									 {{$sold_product}} <!-- tiên 18/04 -->
+
+									{{$sold_product}}<!-- tiên 11/05 -->
+
 									
-								 	<span style="color: #bbb;">{{ __('Đã bán') }}</span>
+								 	<span style="color: #bbb;">  {{ __('Đã bán') }}</span>
 								</a>
 								
 							</p>
@@ -113,40 +118,99 @@
 					                  	<span class="ion-ios-arrow-down"></span>
 					                  </div>
 					                  	<?php 
-						                 	$array = array();
 						                 	
-						                 	foreach($sz_product as $key => $sz){
+						                 	$array_ms = array();
+						                 	$arr_ms = array();
+						                 	
+						                 	foreach($sz_product as $key => $ms){
 						                 		
-						                 		$array[$sz->ctsp_ma] = $sz->ctsp_kichCo;
+						                 		// $array[$sz->sp_ma] = $ms->ms_ten;
 						                 		
+							                 	// echo 'ma'.$ms->ms_ma;
+							                 	// echo 'ten'.$ms->ms_ten;
+							                 	$arr_ms[$ms->ms_ma]=$ms->ms_ten;
+							                 	
 						                 	}
 						                 	
+						                 	// echo '<pre>';
+						                 	// print_r($arr_ms); 	
+						                 	// echo '</pre>';
+
 						                 	/*echo '<pre>';
 						                 	print_r($array);echo '</pre>';
 						                 	echo '<pre>';
 						                 	print_r(array_unique($array));echo '</pre>';
 						                 	$a = array();
 						                 	$a = array_unique($array);*/
-						                 	
 											 	
-
 								        ?>
 					           
-										<select id="size" name="size" class="form-control" style="width:200px" >
-						                	<option value="" selected disabled>{{ __('Chọn kích cỡ') }}</option>
-						                 	@foreach(array_unique($array) as $key => $val)
+										<select id="mausac" name="mausac" class="form-control" required="" pattern="" style="width:200px" >
+						                	<option value=""  selected disabled>{{ __('Chọn màu sắc') }}</option>
+						                 	
+						                  	@foreach($arr_ms as $key => $val)
 						                  		<option value="{{$key}}">{{$val}}</option>
 						                  		
 						                  	@endforeach
-						                  
 						                </select>
-						                
 						                  		
 					                </div>
 						        </div>
 							</div>
+							
 							<div class="w-100"></div>
 
+							<div class="col-md-6">
+								<div class="form-group d-flex">
+						            <div class="select-wrap">
+					                  <div class="icon">
+					                  	<span class="ion-ios-arrow-down"></span>
+					                  </div>
+					                  	<?php 
+						                 	
+						                 	$array = array();
+						                 	
+						                 	foreach($sz_product as $key => $sz){
+						                 		
+						                 		 $array[$sz->kc_ma] = $sz->kc_ten;
+						                 		// array_push($array, "$sz->sp_ma");
+						                 		// $b=array_push($array, "$sz->kc_ten");
+						                 		// $c=array_unique($array);
+						                 		// for( $i=0; $i < count($c) ; $i++){
+							                 	// 	$d[$i] = $sz->sp_ma;
+						                 		// }
+
+						                 		// $kq_sz=array_combine($c,$d);
+						                 	}
+						                 	
+						                 	//  echo '<pre>';
+						                 	// print_r($array); 	
+						                 	// echo '</pre>';
+
+
+						                 	/*echo '<pre>';
+						                 	print_r($array);echo '</pre>';
+						                 	echo '<pre>';
+						                 	print_r(array_unique($array));echo '</pre>';
+						                 	$a = array();
+						                 	$a = array_unique($array);*/
+											 	
+								        ?>
+					           
+										<select id="size" name="size" class="form-control" required="" pattern="" style="width:200px" >
+						                	<option value=""  selected disabled>{{ __('Chọn kích cỡ') }}</option>
+						                 	
+						                  	@foreach($array as $key => $val)
+						                  		<option value="{{$key}}">{{$val}}</option>
+						                  		
+						                  	@endforeach
+						                </select>
+						                  		
+					                </div>
+						        </div>
+							</div>
+							
+							<div class="w-100"></div>
 							<!-- <div class="col-md-6">
 								<div class="form-group d-flex">
 						            <div class="select-wrap">
@@ -167,13 +231,13 @@
 					            	</span>
 
 					            	
-						                <input type="text" id="quantity" name="quantity" class="quantity form-control input-number" value="1" min="1" max="5">
-						           
-					             	
+						            <input type="text" id="quantity" name="quantity" class="quantity form-control input-number" value="1" min="1" max="5">
+					  
 
 					             	{{-- @foreach($sz_product as $key => $slt)
-					                  	<option value="{{$slt->ctsp_ma}}" name="opsize">{{$slt->ctsp_soLuongTon}}</option>
+					                  	<option value="{{$slt->ctsp_ma}}" name="opsize">{{$slt->soLuongTon}}</option>
 					                @endforeach --}}
+				                
 					             	<span class="input-group-btn ml-2">
 					                	<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
 					                     <i class="ion-ios-add"></i>
@@ -184,17 +248,18 @@
 					        <input type="hidden" name="productid_hidden" id="spma" value="{{$value->sp_ma}}">
 
 					        <div class="w-100"></div>
-					         <div class="col-md-12">
-					          		{{-- <p style="color: #000;">{{ __('Có sẵn 80 đôi') }}</p> --}}
+					        
+					        <br>
+					        <div class="col-md-12">
+					        	<!-- @foreach($sz_product as $key => $conlai)
+					          		<p style="color: #000;">Size {{$conlai->kc_ten}} màu {{$conlai->ms_ten}} có sẵn {{$conlai->soLuongTon}} đôi</p> 
+					            @endforeach -->
 					        </div>
 				        	</div>
 
-				        	
 				          	<!-- <p><a href="cart.html" class="btn btn-primary py-3 px-5">{{ __('Mua ngay') }}</a></p> -->
 
-						</div>
-				
-				    			
+						</div>	
     			</div>
     			<div class="row">
     				<div class="col-lg-6 ">
@@ -210,7 +275,6 @@
     					
     		</form>
 
-
 <!-- Tien 13/3 -->
     		<!-- <form action="{{URL::to('/reviews')}}" method="POST">
 				{{ csrf_field() }}
@@ -221,8 +285,6 @@
     				</div>
 			</form> -->
 		@endforeach
-
-
 
     		<div class="row mt-5">
           <div class="col-md-12 nav-link-wrap">
@@ -243,7 +305,7 @@
               	<div class="p-4">
               		
 	              	<h3 class="mb-4">{{$value->sp_ten}}</h3>
-	              	<p>{{$value->sp_ghiChu}}</p>
+	              	<p>{{$value->sp_moTa}}</p>
 
               	</div>
               </div>
@@ -260,19 +322,45 @@
               	<div class="row p-4">
               		
 						   		 <div class="col-md-7 "> <!-- Tiên 14/03 -->
+						   		 				<?php
+						                            $message = Session::get('fail_message');
+						                            if ($message){
+						                                echo '<span class="alert alert-danger">'.$message."</span>";
+						                                
+						                                Session::put('fail_message',null);
+						                            }
+						                            $message = Session::get('success_message');
+						                            if ($message){
+						                                echo '<span class="alert alert-success">'.$message."</span>";
+						                                
+						                                Session::put('success_message',null);
+						                            }
+						                        ?>
+						                        <br>
+						                        <br>
 						   		 	<h3 class="mb-4">{{$total_view}} {{ __('nhận xét:') }}</h3>
-						   		 	@foreach($comments as $key => $comment)
 						   		 	
-						   						   			
+						   		 	@foreach($comments as $key => $comment)
+						   					   			
 						   			<div class="review">
 								   		<div class="user-img" style="background-image: url({{URL::to('public/frontend/images/avatar.jpg')}})"></div>
 								   		<div class="desc">
 								   			<h4>
-								   				<span class="text-left">{{$comment->bl_ten}}</span>
-								   				<span class="text-right">{{date('d/m/Y H:i',strtotime($comment->created_at))}}</span>
+								   				<span class="text-left">{{$comment->nd_ten}}</span>
+								   				<span class="text-right">{{$comment->ngayBinhLuan}}</span>
+								   				<!-- <span class="text-right">{{date('d/m/Y H:i',strtotime($comment->created_at))}}</span> -->
 								   			</h4>
-								   			
-								   			<p>{{$comment->bl_noidung}}</p>
+								   			<p class="star">
+								   				<span>
+								   					<i class="ion-ios-star-outline"></i>
+								   					<i class="ion-ios-star-outline"></i>
+								   					<i class="ion-ios-star-outline"></i>
+								   					<i class="ion-ios-star-outline"></i>
+								   					<i class="ion-ios-star-outline"></i>
+							   					</span>
+							   					<span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
+								   			</p>
+								   			<p>{{$comment->noiDung}}</p>
 								   		</div>
 								   	</div>
 								   	@endforeach		
@@ -339,37 +427,37 @@
 							   			</p>
 							   		</div>
 								</div> --}}
-								<!-- Tiên 14/03 -->
-								@foreach($all_product as $key => $product)
-								<div class="col-md-6">
-					    				<div class="well">
-					    					<h3>{{ __('Viết nhận xét của bạn') }}</h3>
-					 						
-					    					<form method="post" action="{{URL::to('/comment/'.$product->sp_ma)}}">
-					    						{{ csrf_field() }}
-					    						<div class="form-group">
-					    							<label for="email">{{ __('Email') }}</label>
-					    							<input required type="email" class="form-control" id="email" name="email">
-					    						</div>
+								<!-- Tiên 06/05 -->
+								<?php
+                                    $mand = Session::get('nd_ma');
+                                    // $tennd = Session::get('nd_ten');
+                                ?>
+                                    @if ($mand)
+                                    	@foreach($all_product as $key => $product)
+											<div class="col-md-6">
+								    				<div class="well" >
+								    					<h3>{{ __('Viết nhận xét của bạn') }}</h3>
+								 						
+								    					<form method="post" action="{{URL::to('/comment/'.$product->sp_ma)}}" >
+								    						{{ csrf_field() }}
+								    						
+								    						<div class="form-group" >
+								    							
+								    							<label for="cm">{{ __('Nhận xét') }}</label>
+								    							<input type="hidden" name="_token" value="{{csrf_token()}}"/>
+								    							<textarea class="form-control" rows="3" id="cm" name="content" required="" ></textarea>
+								    						</div>
+								    						<div class="form-group text-left">
+								    							<button type="submit" class="btn btn-primary">{{ __('Gửi') }}</button>
+								    						</div>
+								    						
 
-					    						<div class="form-group">
-					    							<label for="name">{{ __('Tên') }}</label>
-					    							<input required type="text" class="form-control" id="name" name="name">
-					    						</div>
-					    						<div class="form-group">
-					    							<label for="cm">{{ __('Nhận xét') }}</label>
-					    							<textarea class="form-control" rows="5" id="cm" name="content"></textarea>
-					    						</div>
-					    						<div class="form-group text-left">
-					    							<button type="submit" class="btn btn-primary">{{ __('Gửi') }}</button>
-					    						</div>
-					    						
-
-					    					</form>
-					    					
-					    				</div>
-					    		</div>
-					    		@endforeach
+								    					</form>
+								    					
+								    				</div>
+								    		</div>
+								    	@endforeach
+								    @endif
 						   	</div>
               </div>
             </div>
@@ -380,15 +468,22 @@
    <script src="http://www.codermen.com/js/jquery.js"></script>
 
         <script type="text/javascript">
-    	
+    	 // Tien 08/05
+         //dat thi gian tat thong bao
+        setTimeout(function(){
+           $("span.alert").remove();
+        }, 5000 ); // 5 secs
+
+        
         $(document).ready(function(){
         	var slt = 1;
 
-            $('select[name="size"]').on('change',function(){
-                var ctsp_ma = $(this).val(); // size_id => ctsp_ma
-                console.log(ctsp_ma,'ctsp_ma'); 
-                
-                if(ctsp_ma){
+
+        	$('select[name="mausac"]').on('change',function(){
+                var ms_ma = $(this).val(); // mausac_id => ms_ma
+                console.log(ms_ma,'ms_ma'); 
+
+                if(ms_ma){
 
                     $.ajax({
 
@@ -396,28 +491,57 @@
                         dataType: 'json',
                         type: 'GET',
                         data:{
-                        	ctsp_ma: ctsp_ma
+                        	ms_ma: ms_ma
                         },
                         success: function(data){
                             console.log(data);
                             
                              $.each(data, function(name,stock){
                                 $('input[name="quantity"]').attr({
-								       "max" : stock,        // substitute your own
-								       "min" : 1          // values (or variables) here
+								       "max" : stock,   // substitute your own
+								       "min" : 1       // values (or variables) here
 								    });
                               console.log(stock, 'stock');
                               $('input[name="quantity"]').val("1");
                               slt = stock;
-
-                             
-                             
-                        
                     		});
                         }
                     });
                 }
             });
+
+
+            $('select[name="size"]').on('change',function(){
+                var kc_ma = $(this).val(); // size_id => kc_ma
+                console.log(kc_ma,'kc_ma'); 
+                
+                if(kc_ma){
+
+                    $.ajax({
+
+                        url: "{{url('getSlt')}}",
+                        dataType: 'json',
+                        type: 'GET',
+                        data:{
+                        	kc_ma: kc_ma
+                        },
+                        success: function(data){
+                            console.log(data);
+                            
+                             $.each(data, function(name,stock){
+                                $('input[name="quantity"]').attr({
+								       "max" : stock,   // substitute your own
+								       "min" : 1       // values (or variables) here
+								    });
+                              console.log(stock, 'stock');
+                              $('input[name="quantity"]').val("1");
+                              slt = stock;
+                    		});
+                        }
+                    });
+                }
+            });
+
 
 
             var quantitiy=0;
@@ -449,7 +573,7 @@
 		      
 		            // Increment
 		            if(quantity>1){
-		            $('#quantity').val(quantity - 1);
+		            	$('#quantity').val(quantity - 1);
 		            }
 		    });
         });

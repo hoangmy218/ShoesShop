@@ -21,7 +21,7 @@
                                                 <a href="{{URL::to('/dashboard')}}"><i class="ik ik-home"></i></a>
                                             </li>
                                             <li class="breadcrumb-item">
-                                                <a href="{{URL::to('/manage-category')}}">Quản lý thương hiệu</a>
+                                                <a href="{{URL::to('/manage-brand')}}">Quản lý thương hiệu</a>
                                             </li>
                                             <li class="breadcrumb-item active" aria-current="page">Cập nhật thương hiệu</li>
                                         </ol>

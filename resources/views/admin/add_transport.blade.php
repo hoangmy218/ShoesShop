@@ -22,6 +22,7 @@
                                             </li>
                                             <li class="breadcrumb-item">
                                                 <a href="{{URL::to('/manage-transport')}}">Quản lý hình thức vận chuyển</a>
+
                                             </li>
                                             {{-- <li class="breadcrumb-item active" aria-current="page">Thêm hình thức vận chuyển</li> --}}
                                         </ol>

@@ -1,4 +1,5 @@
-[2020-05-08 14:20:50] local.ERROR: Undefined property: stdClass::$dh_tenNhan (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\view_history.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined property: stdClass::$dh_tenNhan (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\esources\\views\\admin\\view_history.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\ccfc1d8fb24bab63d0863ae8848cecaffd731c12.php:70, ErrorException(code: 0): Undefined property: stdClass::$dh_tenNhan at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\ccfc1d8fb24bab63d0863ae8848cecaffd731c12.php:70)
+[2020-05-08 14:20:50] local.ERROR: Undefined property: stdClass::$dh_tenNhan (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\view_history.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined property: stdClass::$dh_tenNhan (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\
+esources\\views\\admin\\view_history.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\ccfc1d8fb24bab63d0863ae8848cecaffd731c12.php:70, ErrorException(code: 0): Undefined property: stdClass::$dh_tenNhan at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\ccfc1d8fb24bab63d0863ae8848cecaffd731c12.php:70)
 [stacktrace]
 #0 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('D:\\\\xampp\\\\htdocs...', Array)
@@ -137,7 +138,8 @@
 #66 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #67 {main}
 "} 
-[2020-05-08 14:38:28] local.ERROR: syntax error, unexpected end of file (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\manage_product.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected end of file (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\esources\\views\\admin\\manage_product.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\33bcb015e291419e21a16261c057f881111df485.php:144, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected end of file at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\33bcb015e291419e21a16261c057f881111df485.php:144)
+[2020-05-08 14:38:28] local.ERROR: syntax error, unexpected end of file (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\manage_product.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected end of file (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\
+esources\\views\\admin\\manage_product.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\33bcb015e291419e21a16261c057f881111df485.php:144, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected end of file at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\33bcb015e291419e21a16261c057f881111df485.php:144)
 [stacktrace]
 #0 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(47): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError), 1)
 #1 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('D:\\\\xampp\\\\htdocs...', Array)
@@ -209,7 +211,8 @@
 #67 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #68 {main}
 "} 
-[2020-05-08 14:39:25] local.ERROR: Property [km_chuDe] does not exist on this collection instance. (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\manage_product.blade.php) {"exception":"[object] (ErrorException(code: 0): Property [km_chuDe] does not exist on this collection instance. (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\esources\\views\\admin\\manage_product.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Collection.php:2160, Exception(code: 0): Property [km_chuDe] does not exist on this collection instance. at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Collection.php:2160)
+[2020-05-08 14:39:25] local.ERROR: Property [km_chuDe] does not exist on this collection instance. (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\manage_product.blade.php) {"exception":"[object] (ErrorException(code: 0): Property [km_chuDe] does not exist on this collection instance. (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\
+esources\\views\\admin\\manage_product.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Collection.php:2160, Exception(code: 0): Property [km_chuDe] does not exist on this collection instance. at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Collection.php:2160)
 [stacktrace]
 #0 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Exception), 1)
 #1 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('D:\\\\xampp\\\\htdocs...', Array)
@@ -352,7 +355,8 @@
 #66 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #67 {main}
 "} 
-[2020-05-08 15:03:24] local.ERROR: Undefined property: stdClass::$sp_donGiaNhap (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\edit_product.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined property: stdClass::$sp_donGiaNhap (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\esources\\views\\admin\\edit_product.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:56, ErrorException(code: 0): Undefined property: stdClass::$sp_donGiaNhap at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:56)
+[2020-05-08 15:03:24] local.ERROR: Undefined property: stdClass::$sp_donGiaNhap (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\edit_product.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined property: stdClass::$sp_donGiaNhap (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\
+esources\\views\\admin\\edit_product.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:56, ErrorException(code: 0): Undefined property: stdClass::$sp_donGiaNhap at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:56)
 [stacktrace]
 #0 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('D:\\\\xampp\\\\htdocs...', Array)
@@ -491,7 +495,8 @@
 #66 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #67 {main}
 "} 
-[2020-05-08 15:09:28] local.ERROR: Undefined property: stdClass::$sp_donGiaNhap (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\edit_product.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined property: stdClass::$sp_donGiaNhap (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\esources\\views\\admin\\edit_product.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:56, ErrorException(code: 0): Undefined property: stdClass::$sp_donGiaNhap at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:56)
+[2020-05-08 15:09:28] local.ERROR: Undefined property: stdClass::$sp_donGiaNhap (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\edit_product.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined property: stdClass::$sp_donGiaNhap (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\
+esources\\views\\admin\\edit_product.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:56, ErrorException(code: 0): Undefined property: stdClass::$sp_donGiaNhap at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:56)
 [stacktrace]
 #0 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('D:\\\\xampp\\\\htdocs...', Array)
@@ -559,7 +564,8 @@
 #63 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #64 {main}
 "} 
-[2020-05-08 15:11:10] local.ERROR: Undefined property: stdClass::$sp_ghiChu (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\edit_product.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined property: stdClass::$sp_ghiChu (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\esources\\views\\admin\\edit_product.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:119, ErrorException(code: 0): Undefined property: stdClass::$sp_ghiChu at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:119)
+[2020-05-08 15:11:10] local.ERROR: Undefined property: stdClass::$sp_ghiChu (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\edit_product.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined property: stdClass::$sp_ghiChu (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\
+esources\\views\\admin\\edit_product.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:119, ErrorException(code: 0): Undefined property: stdClass::$sp_ghiChu at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:119)
 [stacktrace]
 #0 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('D:\\\\xampp\\\\htdocs...', Array)
@@ -627,7 +633,8 @@
 #63 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #64 {main}
 "} 
-[2020-05-08 15:11:37] local.ERROR: Undefined property: stdClass::$sp_ghiChu (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\edit_product.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined property: stdClass::$sp_ghiChu (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\esources\\views\\admin\\edit_product.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:119, ErrorException(code: 0): Undefined property: stdClass::$sp_ghiChu at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:119)
+[2020-05-08 15:11:37] local.ERROR: Undefined property: stdClass::$sp_ghiChu (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\edit_product.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined property: stdClass::$sp_ghiChu (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\
+esources\\views\\admin\\edit_product.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:119, ErrorException(code: 0): Undefined property: stdClass::$sp_ghiChu at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:119)
 [stacktrace]
 #0 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('D:\\\\xampp\\\\htdocs...', Array)
@@ -695,7 +702,8 @@
 #63 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #64 {main}
 "} 
-[2020-05-08 15:11:41] local.ERROR: Undefined property: stdClass::$sp_ghiChu (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\edit_product.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined property: stdClass::$sp_ghiChu (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\esources\\views\\admin\\edit_product.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:119, ErrorException(code: 0): Undefined property: stdClass::$sp_ghiChu at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:119)
+[2020-05-08 15:11:41] local.ERROR: Undefined property: stdClass::$sp_ghiChu (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\edit_product.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined property: stdClass::$sp_ghiChu (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\
+esources\\views\\admin\\edit_product.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:119, ErrorException(code: 0): Undefined property: stdClass::$sp_ghiChu at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:119)
 [stacktrace]
 #0 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('D:\\\\xampp\\\\htdocs...', Array)
@@ -832,7 +840,8 @@
 #64 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #65 {main}
 "} 
-[2020-05-08 15:38:48] local.ERROR: Undefined variable: kn (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\edit_product.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: kn (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\esources\\views\\admin\\edit_product.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:102, ErrorException(code: 0): Undefined variable: kn at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:102)
+[2020-05-08 15:38:48] local.ERROR: Undefined variable: kn (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\edit_product.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: kn (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\
+esources\\views\\admin\\edit_product.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:102, ErrorException(code: 0): Undefined variable: kn at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\512948f07d881a53e3647b17a34f546d0d0370de.php:102)
 [stacktrace]
 #0 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('D:\\\\xampp\\\\htdocs...', Array)
@@ -1255,7 +1264,8 @@
 #66 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #67 {main}
 "} 
-[2020-05-08 16:02:03] local.ERROR: Undefined property: stdClass::$dh_tenNhan (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\view_history.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined property: stdClass::$dh_tenNhan (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\esources\\views\\admin\\view_history.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\ccfc1d8fb24bab63d0863ae8848cecaffd731c12.php:70, ErrorException(code: 0): Undefined property: stdClass::$dh_tenNhan at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\ccfc1d8fb24bab63d0863ae8848cecaffd731c12.php:70)
+[2020-05-08 16:02:03] local.ERROR: Undefined property: stdClass::$dh_tenNhan (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\view_history.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined property: stdClass::$dh_tenNhan (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\
+esources\\views\\admin\\view_history.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\ccfc1d8fb24bab63d0863ae8848cecaffd731c12.php:70, ErrorException(code: 0): Undefined property: stdClass::$dh_tenNhan at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\ccfc1d8fb24bab63d0863ae8848cecaffd731c12.php:70)
 [stacktrace]
 #0 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('D:\\\\xampp\\\\htdocs...', Array)
@@ -1917,7 +1927,8 @@
 #60 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #61 {main}
 "} 
-[2020-05-08 16:28:11] local.ERROR: Undefined variable: pro (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\view_history.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: pro (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\esources\\views\\admin\\view_history.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\ccfc1d8fb24bab63d0863ae8848cecaffd731c12.php:74, ErrorException(code: 0): Undefined variable: pro at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\ccfc1d8fb24bab63d0863ae8848cecaffd731c12.php:74)
+[2020-05-08 16:28:11] local.ERROR: Undefined variable: pro (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\view_history.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: pro (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\
+esources\\views\\admin\\view_history.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\ccfc1d8fb24bab63d0863ae8848cecaffd731c12.php:74, ErrorException(code: 0): Undefined variable: pro at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\ccfc1d8fb24bab63d0863ae8848cecaffd731c12.php:74)
 [stacktrace]
 #0 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('D:\\\\xampp\\\\htdocs...', Array)
@@ -2452,7 +2463,8 @@
 #60 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #61 {main}
 "} 
-[2020-05-08 17:13:58] local.ERROR: Undefined property: stdClass::$sp_ghiChu (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\chitiet_sanpham.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined property: stdClass::$sp_ghiChu (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\esources\\views\\admin\\chitiet_sanpham.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\3d63f0d8123a6d970e42bb69caa8907d8d40ddb3.php:130, ErrorException(code: 0): Undefined property: stdClass::$sp_ghiChu at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\3d63f0d8123a6d970e42bb69caa8907d8d40ddb3.php:130)
+[2020-05-08 17:13:58] local.ERROR: Undefined property: stdClass::$sp_ghiChu (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\chitiet_sanpham.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined property: stdClass::$sp_ghiChu (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\
+esources\\views\\admin\\chitiet_sanpham.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\3d63f0d8123a6d970e42bb69caa8907d8d40ddb3.php:130, ErrorException(code: 0): Undefined property: stdClass::$sp_ghiChu at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\3d63f0d8123a6d970e42bb69caa8907d8d40ddb3.php:130)
 [stacktrace]
 #0 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('D:\\\\xampp\\\\htdocs...', Array)
@@ -2520,7 +2532,8 @@
 #63 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #64 {main}
 "} 
-[2020-05-08 17:14:19] local.ERROR: Undefined variable: sp (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\chitiet_sanpham.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: sp (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\esources\\views\\admin\\chitiet_sanpham.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\3d63f0d8123a6d970e42bb69caa8907d8d40ddb3.php:56, ErrorException(code: 0): Undefined variable: sp at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\3d63f0d8123a6d970e42bb69caa8907d8d40ddb3.php:56)
+[2020-05-08 17:14:19] local.ERROR: Undefined variable: sp (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\chitiet_sanpham.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: sp (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\
+esources\\views\\admin\\chitiet_sanpham.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\3d63f0d8123a6d970e42bb69caa8907d8d40ddb3.php:56, ErrorException(code: 0): Undefined variable: sp at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\3d63f0d8123a6d970e42bb69caa8907d8d40ddb3.php:56)
 [stacktrace]
 #0 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('D:\\\\xampp\\\\htdocs...', Array)
@@ -2588,7 +2601,8 @@
 #63 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #64 {main}
 "} 
-[2020-05-08 17:15:30] local.ERROR: Undefined variable: size (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\chitiet_sanpham.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: size (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\esources\\views\\admin\\chitiet_sanpham.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\3d63f0d8123a6d970e42bb69caa8907d8d40ddb3.php:104, ErrorException(code: 0): Undefined variable: size at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\3d63f0d8123a6d970e42bb69caa8907d8d40ddb3.php:104)
+[2020-05-08 17:15:30] local.ERROR: Undefined variable: size (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\chitiet_sanpham.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: size (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\
+esources\\views\\admin\\chitiet_sanpham.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\3d63f0d8123a6d970e42bb69caa8907d8d40ddb3.php:104, ErrorException(code: 0): Undefined variable: size at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\3d63f0d8123a6d970e42bb69caa8907d8d40ddb3.php:104)
 [stacktrace]
 #0 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('D:\\\\xampp\\\\htdocs...', Array)
@@ -2656,7 +2670,8 @@
 #63 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #64 {main}
 "} 
-[2020-05-08 17:16:17] local.ERROR: Undefined variable: sp (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\chitiet_sanpham.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: sp (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\esources\\views\\admin\\chitiet_sanpham.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\3d63f0d8123a6d970e42bb69caa8907d8d40ddb3.php:56, ErrorException(code: 0): Undefined variable: sp at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\3d63f0d8123a6d970e42bb69caa8907d8d40ddb3.php:56)
+[2020-05-08 17:16:17] local.ERROR: Undefined variable: sp (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\chitiet_sanpham.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: sp (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\
+esources\\views\\admin\\chitiet_sanpham.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\3d63f0d8123a6d970e42bb69caa8907d8d40ddb3.php:56, ErrorException(code: 0): Undefined variable: sp at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\3d63f0d8123a6d970e42bb69caa8907d8d40ddb3.php:56)
 [stacktrace]
 #0 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('D:\\\\xampp\\\\htdocs...', Array)
@@ -2724,7 +2739,8 @@
 #63 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #64 {main}
 "} 
-[2020-05-08 17:18:29] local.ERROR: Undefined variable: sp (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\chitiet_sanpham.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: sp (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\esources\\views\\admin\\chitiet_sanpham.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\3d63f0d8123a6d970e42bb69caa8907d8d40ddb3.php:56, ErrorException(code: 0): Undefined variable: sp at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\3d63f0d8123a6d970e42bb69caa8907d8d40ddb3.php:56)
+[2020-05-08 17:18:29] local.ERROR: Undefined variable: sp (View: D:\xampp\htdocs\shoesshop7\ShoesShop\resources\views\admin\chitiet_sanpham.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: sp (View: D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\
+esources\\views\\admin\\chitiet_sanpham.blade.php) at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\3d63f0d8123a6d970e42bb69caa8907d8d40ddb3.php:56, ErrorException(code: 0): Undefined variable: sp at D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\storage\\framework\\views\\3d63f0d8123a6d970e42bb69caa8907d8d40ddb3.php:56)
 [stacktrace]
 #0 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 D:\\xampp\\htdocs\\shoesshop7\\ShoesShop\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('D:\\\\xampp\\\\htdocs...', Array)

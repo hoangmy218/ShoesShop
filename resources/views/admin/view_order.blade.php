@@ -3,7 +3,7 @@
 
 <div class="main-content">
                     <div class="container-fluid">
-                        <div class="page-header">
+                        <div class="page-header">`
                             <div class="row align-items-end">
                                 <div class="col-lg-8">
                                     <div class="page-header-title">
@@ -23,9 +23,7 @@
                                             <li class="breadcrumb-item">
                                                 <a href="{{URL::to('/manage-order')}}">Quản lý đơn hàng</a>
                                             </li>
-                                            <li class="breadcrumb-item active" aria-current="page">
-                                                <a href="{{URL::to('/view-history/'.$order->nd_ma)}}">Lịch sử đơn</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Chi tiết đơn</li>
+                                            <li class="breadcrumb-item active" aria-current="page">Chi tiết đơn hàng</li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -45,13 +43,13 @@
                                     <div class="col-sm-4 invoice-col">
                                         Người nhận
                                         <address>
-                                            <strong>{{$order->dh_tenNhan}}</strong><br>{{$order->dh_diaChiNhan}}<br>Phone: {{$order->dh_dienThoai}}<br>Email: {{$order->dh_email}}
+                                            <strong>{{$order->dh_tenNguoiNhan}}</strong><br>{{$order->dh_diaChiNhan}}<br>Phone: {{$order->dh_dienThoaiNhan}}<br>
                                         </address>
                                     </div>
                                     <div class="col-sm-4 invoice-col">
                                         <b>Mã đơn hàng #{{$order->dh_ma}}</b><br>          
-                                        <b>Hình thức vận chuyển:</b> {{$order->vc_ten}}<br>
-                                        <b>Hình thức thanh toán:</b> {{$order->tt_ten}}
+                                        <b>Hình thức vận chuyển:</b> {{$order->htvc_ten}}<br>
+                                        <b>Hình thức thanh toán:</b> {{$order->httt_ten}}
                                     </div>
                                 </div>
 
@@ -61,7 +59,9 @@
                                             <thead>                                                
                                                 <tr>
                                                     <th>STT</th>
-                                                    <th>Tên sản phẩm</th>
+                                                    <th>Tên sản phẩm</th>                                                   
+                                                    <th>Màu sắc</th>
+                                                    <th>Kích cỡ</th>
                                                     <th>Số lượng</th>
                                                     <th>Đơn giá</th>
                                                     <th>Thành tiền</th>
@@ -72,16 +72,20 @@
                                                 <?php 
                                                     $i=1;
                                                     $congTien=0;
+                                                    $thanhTien=0;
 
                                                 ?>
                                                 @foreach($items as $item)
                                                 <tr>
                                                     <td>{{$i++}}</td>
                                                     <td>{{$item->sp_ten}}</td>
-                                                    <td>{{$item->soLuongDat}}</td>
-                                                    <td>{{number_format($item->donGiaBan).' VND'}}</td>
-                                                    <td>{{number_format($item->thanhTien).' VND'}}</td>
-                                                    <?php $congTien = $congTien + $item->thanhTien; ?>
+                                                    <td>{{$item->ms_ten}}</td>
+                                                    <td>{{$item->kc_ten}}</td>
+                                                    <td>{{$item->SoLuongDat}}</td>
+                                                    <td>{{number_format($item->DonGiaBan).' VND'}}</td>
+                                                    <?php $thanhTien = $item->DonGiaBan * $item->SoLuongDat; ?>
+                                                    <td>{{number_format($thanhTien).' VND'}}</td>
+                                                    <?php $congTien = $congTien + $thanhTien; ?>
                                                 </tr>
                                                  @endforeach
                                             </tbody>
@@ -92,9 +96,9 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <p class="lead">Phương thức thanh toán:</p>
-                                        <h5><b>{{$order->tt_ten}}</b></h5>
+                                        <h5><b>{{$order->httt_ten}}</b></h5>
                                         <p class="lead">Trạng thái thanh toán:</p>
-                                        @if ($order->tt_ten=='Tiền mặt')
+                                        @if ($order->httt_ten=='Tiền mặt')
                                             <h5><b>Chưa thanh toán</b></h5>
                                         @else
                                              <h5><b>Đã thanh toán</b></h5>
@@ -118,21 +122,23 @@
                                                 </tr>
                                                 <tr>
                                                     <th>Khuyến mãi:</th>
-                                                    <td><?php if (($order->km_ma != NULL) || ($order->km_ma != 0))
-                                                            $disc = $congTien*$order->km_giamGia/100;
-                                                        else
-                                                            $disc = 0;                                                        
+                                                    <td><?php 
+                                                            $disc = 0; 
+                                                        /*if (($order->km_ma != NULL) || ($order->km_ma != 0))
+                                                            $disc = $congTien*$order->km_giamGia/100;*/
+                                                        
+                                                                                                                   
                                                         ?>
                                                         {{number_format($disc).' VND'}}
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th>Phí vận chuyển:</th>
-                                                    <td>{{number_format($order->vc_phi).' VND'}}</td>
+                                                    <td>{{number_format($order->htvc_phi).' VND'}}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Tổng tiền thanh toán:</th>
-                                                    <td>{{number_format($congTien + $order->vc_phi - $disc).' VND'}}</td>
+                                                    <td>{{number_format($congTien + $order->htvc_phi - $disc).' VND'}}</td>
                                                 </tr>
                                             </table>
                                         </div>

@@ -10,7 +10,6 @@
                                         <i class="ik ik-file-text bg-blue"></i>
                                         <div class="d-inline">
                                             <h5>Khuyến mãi</h5>
-                                           {{--  <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -37,28 +36,21 @@
                                         <form class="forms-sample" action="{{URL::to('/update-coupon/'.$edit_value->km_ma)}}" method="POST">
                                              {{csrf_field()}}
                                             <div class="form-group">
-                                                <label for="exampleInputName1">Mã khuyến mãi</label>
-                                                <input type="text" class="form-control" id="exampleInputName1" name="coupon_code" value="{{$edit_value->km_doanMa}}">
-                                            </div>
-                                            <!-- start Ngân (7/4/2020) -->
-                                            <div class="form-group">
-                                                <label for="exampleInputName1">Tên khuyến mãi</label>
+                                                <label for="exampleInputName1">Chủ đề khuyến mãi</label>
                                                 <input type="text" class="form-control" id="exampleInputName1" name="coupon_topic" value="{{$edit_value->km_chuDe}}">
-                                            </div> 
-                                          
-                                            
+                                            </div>
+
                                             <div class="form-group">
                                                 <label for="exampleInputName1">Ngày bắt đầu</label>
-                                                <input type="date" name="coupon_dateB" value="{{$edit_value->km_ngayKT}}" /> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                                <label for="exampleInputName1">Ngày kết thúc</label>
-                                                <input type="date" name="coupon_dateE" value="{{$edit_value->km_ngayBD}}" />
+                                                <input class="form-control datetimepicker-input" type="date" name="coupon_dateB" value="{{$edit_value->km_ngayBD}}" /> 
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputName1">Số lần giảm giá</label>
-                                                <input name="coupon_discount_SL" type="number" value="{{$edit_value->km_soLan}}">
-                                                &nbsp&nbsp&nbsp
-                                                <label for="exampleInputName1">Giảm giá mỗi lần</label>
-                                                <input name="coupon_discount" type="number" value="{{$edit_value->km_giamGia}}">
+                                                <label for="exampleInputName1">Ngày kết thúc</label>
+                                                <input class="form-control datetimepicker-input" type="date" name="coupon_dateE" value="{{$edit_value->km_ngayKT}}" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputName1">Giảm giá % được giảm</label>
+                                                <input class="form-control datetimepicker-input" name="coupon_discount" type="number" value="{{$edit_value->km_giamGia}}">
                                             </div> 
                                             <!-- end Ngân (7/4/2020) -->
                                             

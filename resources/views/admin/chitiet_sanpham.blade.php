@@ -26,7 +26,7 @@
                                 <a href="{{URL::to('/dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item active">
-                                <a href="{{URL::to('/manage-product')}}">Quản lý sản phẩm</a>
+                                <a href="#">Quản lý sản phẩm</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">Chi tiết sản phẩm</li>
                         </ol>

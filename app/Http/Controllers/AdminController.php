@@ -12,7 +12,6 @@ session_start();
 class AdminController extends Controller
 {
     
-     // Ngân (11/3/2020) paste lại nguyên cái public authLogin
     public function authLogin(){
         
         $ltk=Session::get('ltk_ma');
@@ -86,8 +85,7 @@ class AdminController extends Controller
         Session::put('nd_ten',null);
         Session::put('ltk_ma',null);
         Session::put('nd_email',null);
-        return Redirect::to('/admin');
-        //echo "Logout";
+        //Ngân (7/5/2020) bỏ return
     }
 
     public function manage_customer(){
@@ -99,8 +97,9 @@ class AdminController extends Controller
     //Lan
     
     public function active_customer($Controll_nd_ma){
-        try{
             //$this->AuthLogin();
+        try
+        {
             DB::table('nguoidung')->where('nd_ma', $Controll_nd_ma)->update(['nd_trangThai'=>0]);
             Session::put('success_message', 'Bỏ vô hiệu hóa người dùng thành công');
             // return Redirect::to('manage-customer');
@@ -108,12 +107,14 @@ class AdminController extends Controller
             Session::put('fail_message','Bỏ vô hiệu hóa người dùng không thành công!');
         }
             
+
         }
     public function unactive_customer($Controll_nd_ma){
-        try{
-
             //$this->AuthLogin();
-           DB::table('nguoidung')->where('nd_ma', $Controll_nd_ma)->update(['nd_trangThai'=>1]);
+        try
+        {
+            DB::table('nguoidung')->where('nd_ma', $Controll_nd_ma)->update(['nd_trangThai'=>1]);
+
             Session::put('sucess_message', 'Vô hiệu hóa người dùng thành công!');
             // return Redirect::to('manage-customer');
         }catch (\Illuminate\Database\QueryException $e) {

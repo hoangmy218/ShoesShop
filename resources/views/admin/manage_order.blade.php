@@ -78,29 +78,29 @@
                                                         <th scope="row">{{$i}}</th>
                                                         <td>{{$order->dh_ma}}</td>
                                                         <td>{{$order->nd_ten}}</td>
-                                                        <td>{{$order->dh_tenNhan}} / {{$order->dh_diaChiNhan}} / {{$order->dh_dienThoai}} / {{$order->vc_ten}} </td>
+                                                        <td>{{$order->dh_tenNguoiNhan}} / {{$order->dh_diaChiNhan}} / {{$order->dh_dienThoaiNhan}} / {{$order->htvc_ten}} </td>
                                                         <td>{{date('d-m-Y',strtotime($order->dh_ngayDat))}}</td>
                                                         
-                                                        <td>{{$order->tt_ten}}</td>
+                                                        <td>{{$order->httt_ten}}</td>
                                                         <td>{{number_format($order->dh_tongTien).' VND'}}</td>
                                                         <td>
-                                                            @switch($order->dh_trangThai)
-                                                                @case('Chờ xử lý')
-                                                                   <span class="badge badge-pill badge-warning">{{$order->dh_trangThai}}</span>
+                                                            @switch($order->tt_ma)
+                                                                @case(1)
+                                                                   <span class="badge badge-pill badge-warning">{{$order->tt_ten}}</span>
                                                                     @break
 
-                                                                @case('Đã xử lý')
-                                                                    <span class="badge badge-pill badge-primary">{{$order->dh_trangThai}}</span>
+                                                                @case(2)
+                                                                    <span class="badge badge-pill badge-primary">{{$order->tt_ten}}</span>
                                                                     @break
 
-                                                                @case('Đang giao')
-                                                                    <span class="badge badge-pill badge-info">{{$order->dh_trangThai}}</span>
+                                                                @case(3)
+                                                                    <span class="badge badge-pill badge-info">{{$order->tt_ten}}</span>
                                                                     @break
-                                                                @case('Đã giao')
-                                                                   <span class="badge badge-pill badge-success">{{$order->dh_trangThai}}</span>
+                                                                @case(4)
+                                                                   <span class="badge badge-pill badge-success">{{$order->tt_ten}}</span>
                                                                     @break
-                                                                @case('Đã hủy')
-                                                                   <span class="badge badge-pill badge-danger">{{$order->dh_trangThai}}</span>
+                                                                @case(5)
+                                                                   <span class="badge badge-pill badge-danger">{{$order->tt_ten}}</span>
                                                                     @break
                                                                     
                                                             @endswitch
@@ -108,16 +108,16 @@
                                                         <td><div class="table-actions" style="text-align: left">
                                                             
                                                                 
-                                                           @switch($order->dh_trangThai)
-                                                                @case('Chờ xử lý')
+                                                           @switch($order->tt_ma)
+                                                                @case(1)
                                                                     <button type="button" id="{{$order->dh_ma}}" class="btn btn-primary approve" data-toggle="modal" >Duyệt</button>
                                                                     @break
 
-                                                                @case('Đã xử lý')
+                                                                @case(2)
                                                                     <button type="button" id="{{$order->dh_ma}}" class="btn btn-info ship" data-toggle="modal" >Sẵn sàng giao</button>
                                                                     @break
 
-                                                                @case('Đang giao')
+                                                                @case(3)
                                                                     <button type="button" id="{{$order->dh_ma}}" class="btn btn-success complete" data-toggle="modal" >Hoàn tất</button>
                                                                     @break
                                                                 @default
@@ -125,7 +125,7 @@
                                                             @endswitch
                                                             <br>
                                                             <a href="{{URL::to('/view-order/'.$order->dh_ma)}}"><i class="ik ik-eye f-16 mr-15 text-blue"></i></a>  
-                                                            @if ($order->dh_trangThai != 'Đã hủy')
+                                                            @if ($order->tt_ma != 5)
                                                             <i class="ik ik-x-circle cancel text-red" id="{{$order->dh_ma}}"></i>
                                                             @endif
                                                              {{-- <button type="button"  class="btn btn-danger " ><i class="ik ik-x-circle cancel" id="{{$order->dh_ma}}" ></i></button> --}}
@@ -290,7 +290,7 @@
 
         //huy
 
-        
+        //hoan tat
         $(document).on('click','.cancel', function(){
             dh_ma = $(this).attr('id');
             $('#cancelModal').modal('show');

@@ -102,18 +102,18 @@
 							<div class="col-xs-6 text-right">
 								<address>
 									<strong>Người nhận:</strong><br>
-									<strong>{{$order->dh_tenNhan}}</strong><br>
+									<strong>{{$order->dh_tenNguoiNhan}}</strong><br>
 									{{$order->dh_diaChiNhan}}<br>
-									Phone: {{$order->dh_dienThoai}}<br>
-									Email: {{$order->dh_email}}
+									Phone: {{$order->dh_dienThoaiNhan}}<br>
+									&nbsp;
 								</address>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-xs-6">
 								<address>											        
-                                    <b>Hình thức vận chuyển:</b> {{$order->vc_ten}}<br>
-                                    <b>Hình thức thanh toán:</b> {{$order->tt_ten}}<br>
+                                    <b>Hình thức vận chuyển:</b> {{$order->htvc_ten}}<br>
+                                    <b>Hình thức thanh toán:</b> {{$order->httt_ten}}<br>
                                     <b>Ghi chú:</b> {{$order->dh_ghiChu}}
 								</address>
 							</div>
@@ -134,6 +134,8 @@
 										<tr class="line">
 											<td><strong>STT</strong></td>
 											<td class="text-center"><strong>TÊN SẢN PHẨM</strong></td>
+											<td class="text-center"><strong>MÀU SẮC</strong></td>
+											<td class="text-center"><strong>KÍCH CỠ</strong></td>
 											<td class="text-center"><strong>SỐ LƯỢNG</strong></td>
 											<td class="text-right"><strong>ĐƠN GIÁ</strong></td>
 											<td class="text-right"><strong>THÀNH TIỀN</strong></td>
@@ -143,46 +145,49 @@
 										 <?php 
                                             $i=1;
                                             $congTien=0;
-
                                         ?>
 										@foreach($items as $item)
 											<tr>
 												<td>{{$i++}}</td>
                                                 <td><strong>{{$item->sp_ten}}</strong></td>
-												<td class="text-center">{{$item->soLuongDat}}</td>
-												<td class="text-center">{{number_format($item->donGiaBan).' VND'}}</td>
-												<td class="text-right">{{number_format($item->thanhTien).' VND'}}</td>
+                                                <td class="text-center">{{$item->ms_ten}}</td>
+                                                <td class="text-center">{{$item->kc_ten}}</td>
+												<td class="text-center">{{$item->SoLuongDat}}</td>
+												<?php $thanhTien = $item->SoLuongDat * $item->DonGiaBan; ?>
+												<td class="text-center">{{number_format($item->DonGiaBan).' VND'}}</td>
+												<td class="text-right">{{number_format($thanhTien).' VND'}}</td>
 											</tr>
-                                            <?php $congTien = $congTien + $item->thanhTien; ?>
+                                            <?php $congTien = $congTien + $thanhTien; ?>
                                          @endforeach
                                          <tr class="tongtien">
-											<td colspan="3"></td>
+											<td colspan="5"></td>
 											<td class="text-right "><strong>Cộng tiền</strong></td>
 											<td class="text-right"><strong>{{number_format($congTien).' VND'}}</strong></td>
 										</tr>
 										<tr>
-											<td colspan="3"></td>
+											<td colspan="5"></td>
 											<td class="text-right"><strong>Khuyến mãi</strong></td>
 											<td class="text-right">
 												<strong> 
-													<?php if (($order->km_ma != NULL) || ($order->km_ma != 0))
-                                                            $disc = $congTien*$order->km_giamGia/100;
-                                                        else
-                                                            $disc = 0;                                                        
+													<?php 
+														$disc = 0;
+														/*if (($order->km_ma != NULL) || ($order->km_ma != 0))
+                                                            $disc = $congTien*$order->km_giamGia/100;*/
+                                                                                                              
                                                         ?>
                                                         {{number_format($disc).' VND'}}
                                                     </strong>
                                                 </td>
 										</tr>
 										<tr>
-											<td colspan="3">
+											<td colspan="5">
 											</td><td class="text-right"><strong>Vận chuyển</strong></td>
-											<td class="text-right"><strong>{{number_format($order->vc_phi).' VND'}}</strong></td>
+											<td class="text-right"><strong>{{number_format($order->htvc_phi).' VND'}}</strong></td>
 										</tr>
 										<tr class="tongtien">
-											<td colspan="2">
-											</td><td  colspan="2" class="text-right"><strong>Tổng tiền thanh toán</strong></td>
-											<td class="text-right"><strong>{{number_format($congTien+$order->vc_phi - $disc).' VND'}}</strong></td>
+											<td colspan="3">
+											</td><td  colspan="3" class="text-right"><strong>Tổng tiền thanh toán</strong></td>
+											<td class="text-right"><strong>{{number_format($congTien+$order->htvc_phi - $disc).' VND'}}</strong></td>
 										</tr>
 									</tbody>
 								</table>

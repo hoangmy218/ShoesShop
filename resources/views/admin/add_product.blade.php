@@ -23,9 +23,9 @@
                                 <a href="{{URL::to('/dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">Quản lý sản phẩm</a>
+                                <a href="{{URL::to('/manage-product')}}">Quản lý sản phẩm</a>
                             </li>
-                            {{-- <li class="breadcrumb-item active" aria-current="page">Thêm sản phẩm</li> --}}
+                            <li class="breadcrumb-item active" aria-current="page">Thêm sản phẩm</li>
                         </ol>
                     </nav>
                 </div>
@@ -127,7 +127,7 @@
                         <textarea required="" class="form-control" name="pro_des" id="exampleTextarea1" rows="4"></textarea>
                     </div>
                     <button type="submit" id="uploadImage" name="add_pro" class="btn btn-primary mr-2">Thêm</button>
-                    <button id ="cancel" class="btn btn-light">Hủy</button>
+                    <button class="btn btn-light">Hủy</button>
                 </form>
                 </div>
             </div>
@@ -184,6 +184,7 @@ $(document).ready(function(){
             // e.preventDefault();
             // window.history.back();
         });
+
 </script>
 
 @endsection
